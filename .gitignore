@@ -1,2 +1,3 @@
 tools/
-./idea/
+.idea/  
+*.DS_Store
