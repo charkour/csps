@@ -6,8 +6,8 @@ def get_neighbors(vars_list):
     """Return a dict of neighbors, where for each class a
     list of all other classes are presented"""
     res = {}
-    for var in vars_list:
-        res[var] = [var2 for var2 in vars_list if var2 != var]
+    for variable in vars_list:
+        res[variable] = [neighbor for neighbor in vars_list if neighbor != variable]
     return res
 
 
@@ -43,19 +43,23 @@ def constraints(class1, c1, class2, c2):
 
 
 # problem variables
-variables = classes = ["cs108", "cs112",
-                       "cs212", "cs214", "cs262", "cs232", "cs344"]
+variables = classes = ["cs100a", "cs104a", "cs104b", "cs104c", "cs106a", "cs108a", "cs108b", "cs112a", "cs112b",
+                       "cs195a",
+                       "cs212a", "cs212b", "cs214", "cs262", "cs232", "cs344"]
 
 # each variable and their neighbors
 neighbors = get_neighbors(variables)
 
 # attributes for constraint problem
 attributes = {
-    "faculty": ["schuurman", "adams", "plantinga", "vanderlinden", "norman"],
-    "assignments": {"cs108": "schuurman", "cs112": "adams", "cs212": "plantinga", "cs214": "adams",
+    "faculty": ["meyer", "schuurman", "adams", "plantinga", "vanderlinden", "norman"],
+    "assignments": {"cs100a": "meyer", "cs104a": "schuurman", "cs104b": "schuurman", "cs104c": "schuurman",
+                    "cs106a": "norman", "cs108a": "vanderlinden", "cs108b": "arnold", "cs112a": "adams",
+                    "cs112b": "adams", "cs195a": "schuurman", "cs212a": "plantinga", "cs212b": "plantinga",
+                    "cs214": "adams",
                     "cs232": "norman", "cs262": "vanderlinden", "cs344": "vanderlinden"},
-    "time": ["mwf900", "mwf1030", "mwf1130", "tth1030"],
-    "room": ["nh253", "sb382"]
+    "time": ["mwf800", "mwf900", "mwf1030", "mwf1130", "mwf1230", "tth830", "tth1030"],
+    "room": ["nh253", "sb382", "sb010", "sb354"]
 }
 
 # create list of lists and make a cartesian product of them
