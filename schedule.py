@@ -44,20 +44,21 @@ def constraints(class1, c1, class2, c2):
 
 # problem variables
 variables = classes = ["cs100a", "cs104a", "cs104b", "cs104c", "cs106a", "cs108a", "cs108b", "cs112a", "cs112b",
-                       "cs195a",
-                       "cs212a", "cs212b", "cs214", "cs262", "cs232", "cs344"]
+                       "cs195a", "cs212a", "cs212b", "cs262a", "cs262b", "cs295a", "cs336a", "cs336b", "cs342a",
+                       "cs374a", "cs394a", "cs396a"]
 
 # each variable and their neighbors
 neighbors = get_neighbors(variables)
 
 # attributes for constraint problem
 attributes = {
-    "faculty": ["meyer", "schuurman", "arnold", "adams", "plantinga", "vanderlinden", "norman"],
+    "faculty": ["adams", "arnold", "bailey", "meyer", "norman", "plantinga", "schuurman", "vanderlinden"],
     "assignments": {"cs100a": "meyer", "cs104a": "schuurman", "cs104b": "schuurman", "cs104c": "schuurman",
                     "cs106a": "norman", "cs108a": "vanderlinden", "cs108b": "arnold", "cs112a": "adams",
                     "cs112b": "adams", "cs195a": "schuurman", "cs212a": "plantinga", "cs212b": "plantinga",
-                    "cs214": "adams",
-                    "cs232": "norman", "cs262": "vanderlinden", "cs344": "vanderlinden"},
+                    "cs262a": "vanderlinden", "cs262b": "vanderlinden", "cs295a": "schuurman",
+                    "cs336a": "norman", "cs336b": "norman", "cs342a": "bailey", "cs374a": "adams", "cs394a": "bailey",
+                    "cs396a": "vanderlinden"},
     "time": ["mwf800", "mwf900", "mwf1030", "mwf1130", "mwf1230", "tth830", "tth1030"],
     "room": ["nh253", "sb382", "sb010", "sb354"]
 }
