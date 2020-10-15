@@ -52,7 +52,7 @@ neighbors = get_neighbors(variables)
 
 # attributes for constraint problem
 attributes = {
-    "faculty": ["meyer", "schuurman", "adams", "plantinga", "vanderlinden", "norman"],
+    "faculty": ["meyer", "schuurman", "arnold", "adams", "plantinga", "vanderlinden", "norman"],
     "assignments": {"cs100a": "meyer", "cs104a": "schuurman", "cs104b": "schuurman", "cs104c": "schuurman",
                     "cs106a": "norman", "cs108a": "vanderlinden", "cs108b": "arnold", "cs112a": "adams",
                     "cs112b": "adams", "cs195a": "schuurman", "cs212a": "plantinga", "cs212b": "plantinga",
