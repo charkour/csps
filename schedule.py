@@ -27,7 +27,17 @@ def get_neighbors(vars_list):
     for variable in vars_list:
         res[variable] = [neighbor for neighbor in vars_list if neighbor != variable]
     return res
-# TODO: add the room constraints. i.e. labs only go in labs
+
+
+def check_room(a_class):
+    """Based on the class, return its valid room assignments"""
+    # todo: is there a better way to write this?
+    if a_class.startswith("l"):
+        return cs_lab_rooms
+    elif a_class.startswith("cs") or a_class.startswith("data") or a_class.startswith("idis"):
+        return cs_rooms + both
+    elif a_class.startswith("stat") or a_class.startswith("math"):
+        return math_stat_rooms + both
 
 
 def respect_assignments(a_class, possible_value_tuples, assignments):
@@ -35,8 +45,9 @@ def respect_assignments(a_class, possible_value_tuples, assignments):
     (time, room, faculty) combinations where faculty is the same
     on the assignment"""
     prof = assignments[a_class]
-    limited_domain = [value for value in possible_value_tuples if value[2] == prof]
-
+    valid_rooms = check_room(a_class)
+    limited_domain = [value for value in possible_value_tuples if (value[2] == prof
+                                                                   and value[1] in valid_rooms)]
     return a_class, limited_domain
 
 
@@ -153,6 +164,7 @@ user_constraints = {"cs100a": "meyer", "cs104a": "schuurman", "cs104b": "schuurm
                     "stat343a": "pruim",
                     "stat344a": "deruiter",
                     "stat390a": "pruim",
+                    # TODO: add engineering classes and cognates
                     }
 
 # TODO: add ability to have multiple professors: like cs364 and data 303
@@ -163,11 +175,14 @@ attributes = {
     "rooms": []
 }
 
-# todo: add different rooms for different classes. multiple lists and limit classes to rooms
-math_rooms = ['a', "b", 'c', 'd', 'e']
-cs_rooms = ["sb372", "nh064", "nh253", "sb337", "sb354", "sb010", "sb382", "hh336", "hh334"]
+# TODO: remove the fake rooms
+math_stat_rooms = ["nh251", "nh259", 'nh276', 'nh295', 'nh261', "nh295", 'e', 'f']
+cs_rooms = ["sb372", "nh064", "nh253", "sb010", "sb382", "hh336", "hh334", "sc203"]
+both = ["nh064"]
+cs_lab_rooms = ["sb337", "sb354", 'a']
 
-attributes["rooms"] = math_rooms + cs_rooms
+# set rooms
+attributes["rooms"] = math_stat_rooms + cs_rooms + both + cs_lab_rooms
 
 # derive problem variables from assignments
 variables = classes = get_variables(user_constraints)
@@ -194,7 +209,7 @@ solution = backtracking_search(problem)
 # print result
 # TODO: sum of the number of elements rather than number of classes.
 # TODO: give an estimate of the search space. Size of domain?
-print('Number Domains: ' + str(len(domains)))
+print('Number of Domains: ' + str(len(domains)))
 print('Variables: ' + str(variables))
 print('Domains: ' + str(domains))
 print('Neighbors: ' + str(neighbors))
