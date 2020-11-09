@@ -1,5 +1,6 @@
-from tools.aima.csp import backtracking_search, CSP
+from tools.aima.csp import backtracking_search, min_conflicts, CSP
 import itertools
+import timeit
 
 
 def get_variables(assignments):
@@ -48,6 +49,9 @@ def respect_assignments(a_class, possible_value_tuples, assignments):
     valid_rooms = check_room(a_class)
     limited_domain = [value for value in possible_value_tuples if (value[2] == prof
                                                                    and value[1] in valid_rooms)]
+    # TODO: potentially optimize code based on heuristic of once a class slot is picked,
+    # remove it from the possible domains for other classes. Would require a copy of the list
+    # to modify and copy over if the CSP has to back track.
     return a_class, limited_domain
 
 
@@ -176,10 +180,13 @@ attributes = {
 }
 
 # TODO: remove the fake rooms
-math_stat_rooms = ["nh251", "nh259", 'nh276', 'nh295', 'nh261', "nh295", 'e', 'f']
+math_stat_rooms = ["nh251", "nh259", 'nh276', 'nh295', 'nh261', "nh295"]
 cs_rooms = ["sb372", "nh064", "nh253", "sb010", "sb382", "hh336", "hh334", "sc203"]
 both = ["nh064"]
-cs_lab_rooms = ["sb337", "sb354", 'a']
+cs_lab_rooms = ["sb337", "sb354"]
+
+# start timer
+start = timeit.default_timer()
 
 # set rooms
 attributes["rooms"] = math_stat_rooms + cs_rooms + both + cs_lab_rooms
@@ -204,7 +211,14 @@ domains = dict(map(lambda a_class: respect_assignments(a_class, possible_values,
 
 # Setup problem
 problem = CSP(variables, domains, neighbors, constraints)
-solution = backtracking_search(problem)
+
+# solution = backtracking_search(problem)
+# solution = min_conflicts(problem, max_steps=1000)
+solution = min_conflicts(problem)
+
+# top timer
+stop = timeit.default_timer()
+print('Time: ', stop - start)
 
 # print result
 # TODO: sum of the number of elements rather than number of classes.
