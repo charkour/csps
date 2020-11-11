@@ -212,6 +212,8 @@ domains = dict(map(lambda a_class: respect_assignments(a_class, possible_values,
 # Setup problem
 problem = CSP(variables, domains, neighbors, constraints)
 
+# TODO: could write a function for backtracking that uses a heuristic to sort
+# which variables should be assigned first, like classes of professors that need to teach the most.
 # solution = backtracking_search(problem)
 # solution = min_conflicts(problem, max_steps=1000)
 solution = min_conflicts(problem)
