@@ -34,11 +34,16 @@ def check_room(a_class):
     """Based on the class, return its valid room assignments"""
     # todo: is there a better way to write this?
     if a_class.startswith("l"):
-        return cs_lab_rooms
+        if a_class.startswith("lcs"):
+            return cs_lab_rooms
+        else:
+            return bio_lab_rooms
     elif a_class.startswith("cs") or a_class.startswith("data") or a_class.startswith("idis"):
         return cs_rooms + both
     elif a_class.startswith("stat") or a_class.startswith("math"):
         return math_stat_rooms + both
+    else:  # a_class.startswith("bio"):
+        return bio_rooms
 
 
 def respect_assignments(a_class, possible_value_tuples, assignments):
@@ -169,6 +174,77 @@ user_constraints = {"cs100a": "meyer", "cs104a": "schuurman", "cs104b": "schuurm
                     "stat344a": "deruiter",
                     "stat390a": "pruim",
                     # TODO: add engineering classes and cognates
+                    "bio115a": "miller",
+                    "bio123a": "miller",
+                    "bio141a": "shen",
+                    "bio141b": "shen",
+                    "lbio141a": "shen",
+                    "lbio141b": "grasman",
+                    "lbio141c": "grasman",
+                    "lbio141d": "shen",
+                    "bio160a": "grasman",
+                    "bio160n": "wertz",
+                    "lbio160a": "grasman",
+                    "lbio160b": "dejong",
+                    "lbio160c": "dejong",
+                    "lbio160n": "wertz",
+                    "bio161a": "koetje",
+                    "lbio161a": "miller",
+                    "lbio161b": "miller",
+                    "bio205a": "bebej",
+                    "lbio205a": "bebej",
+                    "lbio205b": "bebej",
+                    "lbio205c": "bebej",
+                    "lbio205d": "bebej",
+                    "lbio205e": "barrett",
+                    "bio206a": "dubois",
+                    "bio206b": "barret",
+                    "lbio206a": "dubois",
+                    "lbio206b": "barret",
+                    "lbio206c": "dubois",
+                    "lbio206d": "boldenow",
+                    "bio207a": "wertz",
+                    "bio207b": "wertz",
+                    "lbio207a": "wertz",
+                    "lbio207b": "wertz",
+                    "lbio207c": "wertz",
+                    "lbio207d": "shen",
+                    "lbio207e": "shen",
+                    "lbio207f": "shen",
+                    "lbio207g": "keen",
+                    "lbio207h": "keen",
+                    "lbio207i": "keen",
+                    "bio230a": "dornbos",
+                    "lbio230a": "koetje",
+                    "lbio230b": "barrett",
+                    "lbio230c": "koetje",
+                    "bio250a": "miller",
+                    "bio250b": "dejong",
+                    "bio295a": "koetje",
+                    "bio321a": "wilstermann",
+                    "lbio321a": "wiltermann",
+                    "lbio321b": "wiltermann",
+                    "bio331a": "boldenow",
+                    "lbio331a": "boldenow",
+                    "lbio331b": "boldenow",
+                    "bio332a": "dornbos",
+                    "lbio332a": "dornbos",
+                    "bio333a": "shen",
+                    "lbio333a": "shen",
+                    "bio335a": "barrett",
+                    "lbio335a": "boldenow",
+                    "bio336a": "wertz",
+                    "lbio336a": "wertz",
+                    "bio338a": "miller",
+                    "lbio338a": "miller",
+                    "bio345a": "grasman",
+                    "lbio345a": "grasman",
+                    "bio346a": "warners",
+                    "lbio346a": "warners",
+                    "bio354a": "dornbos",
+                    "bio364a": "koetje",
+                    "bio395a": "bebej",
+                    "bio396a": "dubois"
                     }
 
 # TODO: add ability to have multiple professors: like cs364 and data 303
@@ -179,17 +255,19 @@ attributes = {
     "rooms": []
 }
 
-# TODO: remove the fake rooms
-math_stat_rooms = ["nh251", "nh259", 'nh276', 'nh295', 'nh261', "nh295"]
-cs_rooms = ["sb372", "nh064", "nh253", "sb010", "sb382", "hh336", "hh334", "sc203"]
-both = ["nh064"]
+# TODO: prefer rooms and then 
+math_stat_rooms = ["nh251", "nh259", 'nh276', 'nh261', "nh295"]
+cs_rooms = ["sb372", "nh253", "sb010", "sb382", "hh336", "hh334", "sc203"]
+both = ["nh064", "a"]
 cs_lab_rooms = ["sb337", "sb354"]
+bio_rooms = ["sb256", "sb276", "cfaud", "hc300", "sb103"]
+bio_lab_rooms = ["sb277", "dh132", "dh106", "dh124", "sb210"]
 
 # start timer
 start = timeit.default_timer()
 
 # set rooms
-attributes["rooms"] = math_stat_rooms + cs_rooms + both + cs_lab_rooms
+attributes["rooms"] = math_stat_rooms + cs_rooms + both + cs_lab_rooms + bio_rooms + bio_lab_rooms
 
 # derive problem variables from assignments
 variables = classes = get_variables(user_constraints)
