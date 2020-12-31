@@ -2,7 +2,7 @@
 this and implement the methods actions and result, and possibly
 __init__, goal_test, and path_cost. Then you will create instances
 of your subclass and solve them with the various search functions. */
-class Problem {
+export class Problem {
   initial: any;
   goal: any;
   /*"""The constructor specifies the initial state, and possibly a goal
@@ -17,14 +17,14 @@ class Problem {
   state. The result would typically be a list, but if there are
   many actions, consider yielding them one at a time in an
   iterator, rather than building them all at once.*/
-  action = (state: any) => {
+  action = (_state: any) => {
     throw Error('Not Implemented');
   };
 
   /* Return the state that results from executing the given
   action in the given state. The action must be one of
   self.actions(state).*/
-  result = (state: any, action: any) => {
+  result = (_state: any, _action: any) => {
     throw Error('Not Implemented');
   };
 
@@ -33,13 +33,13 @@ class Problem {
   list, as specified in the constructor. Override this method if
   checking against a single self.goal is not enough.*/
   goal_test = (state: any) => {
-      // TODO: this logic might be incorrect.
-      if (this.goal === typeof Array) {
-        // TODO: this logic might be incorrect. Python has a util is_in function.
-        return this.goal.includes(state);
-      } else {
-        return state === this.goal;
-      }
+    // TODO: this logic might be incorrect.
+    if (this.goal === typeof Array) {
+      // TODO: this logic might be incorrect. Python has a util is_in function.
+      return this.goal.includes(state);
+    } else {
+      return state === this.goal;
+    }
   };
 
   /* Return the cost of a solution path that arrives at state2 from
@@ -47,13 +47,13 @@ class Problem {
   is such that the path doesn't matter, this function will only look at
   state2. If the path does matter, it will consider c and maybe state1
   and action. The default method costs 1 for every step in the path. */
-  path_cost = (c: number, state1: any, action: any, state2: any) => {
+  path_cost = (c: number, _state1: any, _action: any, _state2: any) => {
     return c + 1;
   };
 
   /* For optimization problems, each state has a value.  Hill Climbing
   and related algorithms try to maximize this value. */
-  value = (state: any) => {
+  value = (_state: any) => {
     throw Error('Not Implemented');
   };
 }

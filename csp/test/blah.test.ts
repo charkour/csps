@@ -1,3 +1,6 @@
+// Only use while writing test. Comment out import when actually testing.
+// import 'jest';
+
 import { sum } from '../src';
 
 describe('blah', () => {

@@ -1,3 +1,5 @@
+import { Problem } from '.';
+
 /* This class describes finite-domain Constraint Satisfaction Problems.
     A CSP is specified by the following inputs:
         variables   A list of variables; each is atomic (e.g. int or string).
@@ -33,7 +35,7 @@
         nassigns                Slot: tracks the number of assignments made
         display(a)              Print a human-readable representation
 */
-class CSP extends Problem {
+export class CSP extends Problem {
   variables: any;
   domains: any;
   neighbors: any;

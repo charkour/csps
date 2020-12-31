@@ -1,8 +1,9 @@
 // # Min-conflicts hill-climbing search for CSPs
 
+import { CSP } from './csp';
 
 //     """Solve a CSP by stochastic hillclimbing on the number of conflicts."""
-const min_conflicts = (csp: CSP, max_steps: number = 100000 ) => {
+export const min_conflicts = (csp: CSP, max_steps: number = 100000) => {
   // # Generate a complete assignment for all variables (probably with conflicts)
   let current = {};
   for (const variable in csp.variables) {
@@ -22,14 +23,11 @@ const min_conflicts = (csp: CSP, max_steps: number = 100000 ) => {
     csp.assign(variable, val, current);
   }
   return undefined;
-}
-
+};
 
 // def min_conflicts_value(csp, var, current):
 //     """Return the value that will give var the least number of conflicts.
 //     If there is a tie, choose at random."""
 //     return argmin_random_tie(csp.domains[var],
 //                              key=lambda val: csp.nconflicts(var, val, current))
-const min_conflicts_value = (csp: CSP, variable: any, current: object) => {
-
-}
+const min_conflicts_value = (csp: CSP, variable: any, current: object) => {};
