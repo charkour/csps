@@ -77,7 +77,6 @@ just call assign for that. */
 
   /* Return the number of conflicts var=val has with other variables. */
   nconflicts = (variable: any, val: any, assignment: any[]) => {
-
     // Subclasses may implement this more efficiently
     const conflict = (var2: any) => {
       return (

@@ -1,33 +1,7 @@
 from tools.aima.csp import backtracking_search, min_conflicts, CSP
 import itertools
 import timeit
-
-
-def get_variables(assignments):
-    """returns the keys, which are the variables in the CSP"""
-    return list(assignments.keys())
-
-
-def get_faculty(assignments):
-    """
-    Returns a list of faculty derived from the assignments.
-    ref: https://thispointer.com/python-how-to-create-a-list-of-all-the-values-in-a-dictionary/
-    """
-    unique_values = []
-
-    for prof in assignments.values():
-        if prof not in unique_values:
-            unique_values.append(prof)
-    return unique_values
-
-
-def get_neighbors(vars_list):
-    """Return a dict of neighbors, where for each class a
-    list of all other classes are presented"""
-    res = {}
-    for variable in vars_list:
-        res[variable] = [neighbor for neighbor in vars_list if neighbor != variable]
-    return res
+from schedule_logic import *
 
 
 def check_room(a_class):
@@ -58,30 +32,6 @@ def respect_assignments(a_class, possible_value_tuples, assignments):
     # remove it from the possible domains for other classes. Would require a copy of the list
     # to modify and copy over if the CSP has to back track.
     return a_class, limited_domain
-
-
-def constraints(class1, c1, class2, c2):
-    """Constraints for class scheduling
-    c1 and c2 are tuples in the form (time, room, faculty)
-    returns true if constraints are met.
-    The constraint that there is only one section of class
-    is implicit because classes are variables.
-    """
-    # Return true if same class.
-    if class1 == class2:
-        return True
-
-    # check to make sure faculty is not teaching at the same time
-    if c1[0] == c2[0] and c1[2] == c2[2]:
-        # print("faculty conflict")
-        return False
-    # print(c1[0], c2[0], c1[2], c2[2])
-
-    # Check to make sure class is not in the same room at the same time
-    if c1[0] == c2[0] and c1[1] == c2[1]:
-        # print("class conflict")
-        return False
-    return True
 
 
 user_constraints = {"cs100a": "meyer", "cs104a": "schuurman", "cs104b": "schuurman", "cs104c": "schuurman",
@@ -255,7 +205,7 @@ attributes = {
     "rooms": []
 }
 
-# TODO: prefer rooms and then 
+# TODO: prefer rooms and then
 math_stat_rooms = ["nh251", "nh259", 'nh276', 'nh261', "nh295"]
 cs_rooms = ["sb372", "nh253", "sb010", "sb382", "hh336", "hh334", "sc203"]
 both = ["nh064", "a"]
@@ -267,7 +217,8 @@ bio_lab_rooms = ["sb277", "dh132", "dh106", "dh124", "sb210"]
 start = timeit.default_timer()
 
 # set rooms
-attributes["rooms"] = math_stat_rooms + cs_rooms + both + cs_lab_rooms + bio_rooms + bio_lab_rooms
+attributes["rooms"] = math_stat_rooms + cs_rooms + \
+    both + cs_lab_rooms + bio_rooms + bio_lab_rooms
 
 # derive problem variables from assignments
 variables = classes = get_variables(user_constraints)
@@ -285,7 +236,8 @@ attribute_list = [attributes["times"], attributes["rooms"],
 possible_values = list(itertools.product(*attribute_list))
 
 # get all possible domains
-domains = dict(map(lambda a_class: respect_assignments(a_class, possible_values, user_constraints), classes))
+domains = dict(map(lambda a_class: respect_assignments(
+    a_class, possible_values, user_constraints), classes))
 
 # Setup problem
 problem = CSP(variables, domains, neighbors, constraints)
