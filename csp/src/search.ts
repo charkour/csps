@@ -5,9 +5,9 @@ of your subclass and solve them with the various search functions. */
 export class Problem {
   initial: any;
   goal: any;
-  /*"""The constructor specifies the initial state, and possibly a goal
+  /* The constructor specifies the initial state, and possibly a goal
   state, if there is a unique goal. Your subclass' constructor can add
-  other arguments."""*/
+  other arguments. */
   constructor(initial: any, goal: any = undefined) {
     this.initial = initial;
     this.goal = goal;
@@ -33,9 +33,7 @@ export class Problem {
   list, as specified in the constructor. Override this method if
   checking against a single self.goal is not enough.*/
   goal_test = (state: any) => {
-    // TODO: this logic might be incorrect.
     if (this.goal === typeof Array) {
-      // TODO: this logic might be incorrect. Python has a util is_in function.
       return this.goal.includes(state);
     } else {
       return state === this.goal;

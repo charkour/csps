@@ -12,9 +12,9 @@ import { Problem } from '.';
     In the textbook and in most mathematical definitions, the
     constraints are specified as explicit pairs of allowable values,
     but the formulation here is easier to express and more compact for
-    most cases. (For example, the n-Queens problem can be represented
-    in O(n) space using this notation, instead of O(N^4) for the
-    explicit representation.) In terms of describing the CSP as a
+    most cases (for example, the n-Queens problem can be represented
+    in O(n) space using this notation, instead of O(n^4) for the
+    explicit representation). In terms of describing the CSP as a
     problem, that's all there is.
 
     However, the class also supports data structures and methods that help you
@@ -75,22 +75,25 @@ just call assign for that. */
     }
   };
 
-  /* Return the number of conflicts var=val has with other variables.
-Subclasses may implement this more efficiently */
+  /* Return the number of conflicts var=val has with other variables. */
   nconflicts = (variable: any, val: any, assignment: any[]) => {
+
+    // Subclasses may implement this more efficiently
     const conflict = (var2: any) => {
       return (
         assignment.includes(var2) &&
         !this.constraints(variable, val, var2, assignment[var2])
       );
     };
+
     return this.neighbors.map((v: any) => conflict(v)).length;
   };
 
   /* Show a human-readable representation of the CSP."""
  Subclasses can print in a prettier way, or display with a GUI */
   display = (assignment: any[]) => {
-    console.log('CSP:', this, 'with assignment:', assignment);
+    // console.log('CSP:', this, 'with assignment:', assignment);
+    console.log(assignment);
   };
 
   //     # This is for min_conflicts search
