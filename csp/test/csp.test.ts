@@ -57,15 +57,15 @@ const constraints = (
   //  # check to make sure faculty is not teaching at the same time
   if (
     c1Attributes[0] === c2Attributes[0] &&
-    c1Attributes[2] == c2Attributes[2]
+    c1Attributes[2] === c2Attributes[2]
   ) {
     return false;
   }
 
   // # Check to make sure class is not in the same room at the same time
   if (
-    c1Attributes[0] == c2Attributes[0] &&
-    c1Attributes[1] == c2Attributes[1]
+    c1Attributes[0] === c2Attributes[0] &&
+    c1Attributes[1] === c2Attributes[1]
   ) {
     return false;
   }
