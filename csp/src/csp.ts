@@ -1,4 +1,5 @@
-import { Problem } from '.';
+import { LooseObject } from './interfaces';
+import { Problem } from './search';
 
 /* This class describes finite-domain Constraint Satisfaction Problems.
     A CSP is specified by the following inputs:
@@ -35,7 +36,10 @@ import { Problem } from '.';
         nassigns                Slot: tracks the number of assignments made
         display(a)              Print a human-readable representation
 */
-export class CSP extends Problem {
+
+// TODO: Will probably need to separate the T generic param into multiple different ones.
+// Once the attributes is separated into it's own object type.
+export class CSP<T> extends Problem {
   variables: any;
   domains: any;
   neighbors: any;
@@ -44,7 +48,12 @@ export class CSP extends Problem {
   nassigns: number;
 
   /* Construct a CSP problem. If variables is empty, it becomes domains.keys(). */
-  constructor(variables: any, domains: any, neighbors: any, constraints: any) {
+  constructor(
+    variables: T[] | undefined,
+    domains: LooseObject<T[]>,
+    neighbors: LooseObject<T[]>,
+    constraints: (c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean
+  ) {
     // const initial: any = [];
     super([]);
 
@@ -57,7 +66,11 @@ export class CSP extends Problem {
   }
 
   /* Add {var: val} to assignment; Discard the old value if any.*/
-  assign = (variable: any, val: any, assignment: any) => {
+  assign = <T extends string>(
+    variable: T,
+    val: T[],
+    assignment: LooseObject<T[]>
+  ) => {
     assignment[variable] = val;
     this.nassigns += 1;
   };
@@ -77,7 +90,7 @@ just call assign for that. */
 
   /* Return the number of conflicts var=val has with other variables. */
   nconflicts = (variable: any, val: any, assignment: any[]) => {
-    // Subclasses may implement this more efficiently
+    // Subclasses may implement this (conflict function) more efficiently
     const conflict = (var2: any) => {
       return (
         assignment.includes(var2) &&
