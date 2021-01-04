@@ -39,25 +39,25 @@ import { Problem } from './search';
 
 // TODO: Will probably need to separate the T generic param into multiple different ones.
 // Once the attributes is separated into it's own object type.
-export class CSP<T> extends Problem {
-  variables: any;
-  domains: any;
-  neighbors: any;
-  constraints: any;
-  curr_domains: any;
+export class CSP<T extends string> extends Problem<T[]> {
+  variables: T[];
+  domains: LooseObject<T[][]>;
+  neighbors: LooseObject<T[]>;
+  constraints: (c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean;
+  curr_domains: LooseObject<T[][]> | undefined;
   nassigns: number;
 
   /* Construct a CSP problem. If variables is empty, it becomes domains.keys(). */
   constructor(
     variables: T[] | undefined,
-    domains: LooseObject<T[]>,
+    domains: LooseObject<T[][]>,
     neighbors: LooseObject<T[]>,
     constraints: (c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean
   ) {
     // const initial: any = [];
     super([]);
 
-    this.variables = variables || Object.keys(domains);
+    this.variables = variables || (Object.keys(domains) as T[]);
     this.domains = domains;
     this.neighbors = neighbors;
     this.constraints = constraints;
@@ -66,11 +66,7 @@ export class CSP<T> extends Problem {
   }
 
   /* Add {var: val} to assignment; Discard the old value if any.*/
-  assign = <T extends string>(
-    variable: T,
-    val: T[],
-    assignment: LooseObject<T[]>
-  ) => {
+  assign = (variable: T, val: T[], assignment: LooseObject<T[]>) => {
     assignment[variable] = val;
     this.nassigns += 1;
   };
@@ -78,40 +74,41 @@ export class CSP<T> extends Problem {
   /* Remove {var: val} from assignment.
 DO NOT call this if you are changing a variable to a new value;
 just call assign for that. */
-  unassign = (variable: any, assignment: any[]) => {
-    // TODO: can probably remove this first check. Redundant.
-    if (assignment.includes(variable)) {
-      const index = assignment.indexOf(variable);
-      if (index > -1) {
-        assignment.splice(index, 1);
-      }
+  unassign = (variable: T, assignment: LooseObject<T[]>) => {
+    if (assignment.hasOwnProperty(variable)) {
+      delete assignment[variable];
     }
   };
 
   /* Return the number of conflicts var=val has with other variables. */
-  nconflicts = (variable: any, val: any, assignment: any[]) => {
+  nconflicts = (
+    variable: T,
+    val: T[],
+    assignment: LooseObject<T[]>
+  ): number => {
     // Subclasses may implement this (conflict function) more efficiently
-    const conflict = (var2: any) => {
+    const conflict = (var2: T) => {
       return (
-        assignment.includes(var2) &&
+        assignment.hasOwnProperty(var2) &&
         !this.constraints(variable, val, var2, assignment[var2])
       );
     };
 
-    return this.neighbors.map((v: any) => conflict(v)).length;
+    return Object.keys(this.neighbors).filter((v: string) => conflict(v as T))
+      .length;
   };
 
   /* Show a human-readable representation of the CSP."""
  Subclasses can print in a prettier way, or display with a GUI */
-  display = (assignment: any[]) => {
+  display = (assignment: LooseObject<T[]>) => {
     // console.log('CSP:', this, 'with assignment:', assignment);
     console.log(assignment);
   };
 
   //     # This is for min_conflicts search
   /* Return a list of variables in current assignment that are in conflict */
-  conflicted_vars = (current: any) => {
-    return this.variables.filter((variable: any) => {
+  conflicted_vars = (current: LooseObject<T[]>) => {
+    return this.variables.filter((variable: T) => {
       return this.nconflicts(variable, current[variable], current) > 0;
     });
   };
