@@ -1,11 +1,15 @@
 import itertools
+# need to set the random seed to get the repeatable results.
+import random
 
+from aima_python.utils import argmin_random_tie, shuffled
+
+random.seed(1)
 from aima_python import csp, search
 from schedule_logic import *
 
+
 # Testing Search
-
-
 def test_search():
     try:
         problem = search.Problem()
@@ -64,24 +68,24 @@ def get_domains(variables, possible_domain_values):
         domains[variable] = possible_domain_values
     return domains
 
+# some values for testing
+variables = classes = ['cs108', 'cs112', 'cs212', 'cs214']
+faculty = ['norman', 'vanderlinden', 'adams']
+times = ['mwf800', 'mwf900']
+rooms = ['nh253', 'sb382']
+attribute_list = [times, rooms, faculty]
+possible_domain_values = get_possible_domain_values(attribute_list)
+domains = get_domains(variables, possible_domain_values)
+neighbors = get_neighbors(variables)
+
 # testing CSP
-
-
+# TODO: can test the Problem class methods for the CSP class.
 def test_csp():
     try:
         aCSP = csp.CSP()
     except TypeError:
         print("Pass throw on invalid CSP instantiation")
 
-    # some values for testing
-    variables = classes = ['cs108', 'cs112', 'cs212', 'cs214']
-    faculty = ['norman', 'vanderlinden', 'adams']
-    times = ['mwf800', 'mwf900']
-    rooms = ['nh253', 'sb382']
-    attribute_list = [times, rooms, faculty]
-    possible_domain_values = get_possible_domain_values(attribute_list)
-    domains = get_domains(variables, possible_domain_values)
-    neighbors = get_neighbors(variables)
 
     # setup and now test with all four params
     aCSP = csp.CSP(variables, domains, neighbors, constraints)
@@ -207,8 +211,40 @@ def test_csp():
 
     print("Pass CSP.conflicted_vars")
 
+def test_min_conflicts():
+    # test utilities for min conflicts
+    aList = [1, 2, 3, 4]
+    assert shuffled(aList) == [4, 1, 3, 2]
+    print("Pass Shuffle()")
 
-# TODO: can test the Problem class methods for the CSP class.
+    # uses Identity function
+    assert argmin_random_tie([4, 1, 3, 2]) == 1
+    print("argmin pass()")
+
+    # Generate the CSP values.
+    aCSP = csp.CSP(variables, domains, neighbors, constraints)
+
+    # set up assignments for classes.
+    assignment = {}
+    first_class, second_class, third_class, fourth_class = variables
+
+    # Note: for the testing, the domains are the same for every class.
+    first_domain_attrs, second_domain_attrs = (domain for domain in domains[first_class][0:2])
+    aCSP.assign(first_class, first_domain_attrs, assignment)
+    aCSP.assign(second_class, second_domain_attrs, assignment)
+    aCSP.assign(third_class, second_domain_attrs, assignment)
+
+    # test csp.min_conflicts_value
+    assert csp.min_conflicts_value(aCSP, fourth_class, assignment) == ('mwf900', 'sb382', 'vanderlinden')
+    aCSP.assign(fourth_class, ('mwf900', 'sb382', 'vanderlinden'), assignment)
+    assert assignment == {'cs108': ('mwf800', 'nh253', 'norman'), 'cs112': ('mwf800', 'nh253', 'vanderlinden'), 'cs212': ('mwf800', 'nh253', 'vanderlinden'), 'cs214': ('mwf900', 'sb382', 'vanderlinden')}
+    print("Pass csp.min_conflicts_value()")
+
+    # test min_conflicts
+    assert csp.min_conflicts(aCSP) == {'cs108': ('mwf900', 'sb382', 'vanderlinden'), 'cs112': ('mwf800', 'sb382', 'adams'), 'cs212': ('mwf800', 'nh253', 'vanderlinden'), 'cs214': ('mwf900', 'nh253', 'norman')}
+    print("Pass csp.min_conflicts()")
+
 if __name__ == "__main__":
-    # test_search()
+    test_search()
     test_csp()
+    test_min_conflicts()

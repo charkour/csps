@@ -1,4 +1,5 @@
 export * from './csp';
+export * from './min_conflicts';
 export * from './search';
 
 export const sum = (a: number, b: number) => {
