@@ -237,7 +237,7 @@ def test_min_conflicts():
     # test csp.min_conflicts_value
     assert csp.min_conflicts_value(aCSP, fourth_class, assignment) == ('mwf900', 'sb382', 'vanderlinden')
     aCSP.assign(fourth_class, ('mwf900', 'sb382', 'vanderlinden'), assignment)
-
+    assert assignment == {'cs108': ('mwf800', 'nh253', 'norman'), 'cs112': ('mwf800', 'nh253', 'vanderlinden'), 'cs212': ('mwf800', 'nh253', 'vanderlinden'), 'cs214': ('mwf900', 'sb382', 'vanderlinden')}
     print("Pass csp.min_conflicts_value()")
 
     # test min_conflicts
