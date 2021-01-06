@@ -1,7 +1,11 @@
 import { LooseObject } from "./interfaces";
 import { Problem } from "./search";
 
-/* This class describes finite-domain Constraint Satisfaction Problems.
+// TODO: Will probably need to separate the T generic param into multiple different ones.
+// Once the attributes is separated into it's own object type.
+
+/**
+ * This class describes finite-domain Constraint Satisfaction Problems.
     A CSP is specified by the following inputs:
         variables   A list of variables; each is atomic (e.g. int or string).
         domains     A dict of {var:[possible_value, ...]} entries.
@@ -35,10 +39,12 @@ import { Problem } from "./search";
     The following are just for debugging purposes:
         nassigns                Slot: tracks the number of assignments made
         display(a)              Print a human-readable representation
-*/
-
-// TODO: Will probably need to separate the T generic param into multiple different ones.
-// Once the attributes is separated into it's own object type.
+ *
+ * @export
+ * @class CSP
+ * @extends {Problem<T[]>}
+ * @template T
+ */
 export class CSP<T extends string> extends Problem<T[]> {
   variables: T[];
   domains: LooseObject<T[][]>;
@@ -47,7 +53,15 @@ export class CSP<T extends string> extends Problem<T[]> {
   curr_domains: LooseObject<T[][]> | undefined;
   nassigns: number;
 
-  /* Construct a CSP problem. If variables is empty, it becomes domains.keys(). */
+  /**
+   * Creates an instance of CSP. Construct a CSP problem. If variables is empty, it becomes domains.keys().
+   *
+   * @param {(T[] | undefined)} variables
+   * @param {LooseObject<T[][]>} domains
+   * @param {LooseObject<T[]>} neighbors
+   * @param {(c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean} constraints
+   * @memberof CSP
+   */
   constructor(
     variables: T[] | undefined,
     domains: LooseObject<T[][]>,
@@ -71,19 +85,37 @@ export class CSP<T extends string> extends Problem<T[]> {
     this.nassigns += 1;
   };
 
-  /* Remove {var: val} from assignment.
-DO NOT call this if you are changing a variable to a new value;
-just call assign for that. */
+  /**
+   * Remove {var: val} from assignment.
+   * DO NOT call this if you are changing a variable to a new value;
+   * just call assign for that.
+   *
+   * @param {T} variable
+   * @param {LooseObject<T[]>} assignment
+   * @memberof CSP
+   */
   unassign = (variable: T, assignment: LooseObject<T[]>) => {
     if (assignment.hasOwnProperty(variable)) {
       delete assignment[variable];
     }
   };
 
-  /* Return the number of conflicts var=val has with other variables. */
+  /**
+   *  Return the number of conflicts var=val has with other variables.
+   *
+   * @param {T} variable
+   * @param {T[]} val
+   * @param {LooseObject<T[]>} assignment
+   * @memberof CSP
+   */
   nconflicts = (variable: T, val: T[], assignment: LooseObject<T[]>): number => {
-    // Subclasses may implement this (conflict function) more efficiently
-    const conflict = (var2: T) => {
+    /**
+     * Subclasses may implement this (conflict function) more efficiently
+     *
+     * @param {T} var2
+     * @return {*}  {boolean}
+     */
+    const conflict = (var2: T): boolean => {
       return (
         assignment.hasOwnProperty(var2) && !this.constraints(variable, val, var2, assignment[var2])
       );
@@ -92,15 +124,24 @@ just call assign for that. */
     return Object.keys(this.neighbors).filter((v: string) => conflict(v as T)).length;
   };
 
-  /* Show a human-readable representation of the CSP."""
- Subclasses can print in a prettier way, or display with a GUI */
+  /**
+   * Show a human-readable representation of the CSP.
+   * Subclasses can print in a prettier way, or display with a GUI
+   *
+   * @param {LooseObject<T[]>} assignment
+   * @memberof CSP
+   */
   display = (assignment: LooseObject<T[]>) => {
-    // console.log('CSP:', this, 'with assignment:', assignment);
     console.log(assignment);
   };
 
-  //     # This is for min_conflicts search
-  /* Return a list of variables in current assignment that are in conflict */
+  /**
+   * Return a list of variables in current assignment that are in conflict
+   * This is for min_conflicts search.
+   *
+   * @param {LooseObject<T[]>} current
+   * @memberof CSP
+   */
   conflicted_vars = (current: LooseObject<T[]>) => {
     return this.variables.filter((variable: T) => {
       return this.nconflicts(variable, current[variable], current) > 0;
