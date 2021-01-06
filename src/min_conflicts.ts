@@ -1,13 +1,10 @@
 // Min-conflicts hill-climbing search for CSPs functions
 
-import { CSP } from './csp';
-import { LooseObject } from './interfaces';
+import { CSP } from "./csp";
+import { LooseObject } from "./interfaces";
 
 /* Solve a CSP by stochastic hill-climbing on the number of conflicts. */
-export const min_conflicts = <T extends string>(
-  aCSP: CSP<T>,
-  max_steps: number = 100000
-) => {
+export const min_conflicts = <T extends string>(aCSP: CSP<T>, max_steps: number = 100000) => {
   // Generate a complete assignment for all variables (probably with conflicts)
   let current: LooseObject<T[]> = {};
   aCSP.variables.forEach(variable => {
@@ -34,7 +31,7 @@ If there is a tie, choose at random. */
 export const min_conflicts_value = <T extends string>(
   aCSP: CSP<T>,
   variable: T,
-  current: LooseObject<T[]>
+  current: LooseObject<T[]>,
 ): T[] => {
   const num_conflicts = (val: T[]) => aCSP.nconflicts(variable, val, current);
   return argmin_random_tie(aCSP.domains[variable], num_conflicts);
@@ -68,7 +65,7 @@ ref for reduce(): https://stackoverflow.com/a/31844649/9931154
 export const argmin_random_tie = (
   seq: any[],
   // seq: T[][], // TODO: Is this better?
-  key: (val: any) => number = identity
+  key: (val: any) => number = identity,
 ) => {
   return shuffle_array(seq).reduce((prev, curr) => {
     return key(prev) < key(curr) ? prev : curr;

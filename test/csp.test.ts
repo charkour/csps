@@ -1,11 +1,11 @@
-import { CSP } from '../src';
-import { LooseObject } from '../src/interfaces';
-import { constraints, domains, neighbors, variables } from './test_helpers';
+import { CSP } from "../src";
+import { LooseObject } from "../src/interfaces";
+import { constraints, domains, neighbors, variables } from "./test_helpers";
 
 // TODO: add a better ESLint Config
 
-describe('csp object instance', () => {
-  it('is initialized with four params', () => {
+describe("csp object instance", () => {
+  it("is initialized with four params", () => {
     const csp = new CSP<string>(variables, domains, neighbors, constraints);
     expect(csp.initial).toEqual([]);
     expect(csp.goal).toEqual(undefined);
@@ -18,7 +18,7 @@ describe('csp object instance', () => {
     expect(csp.nassigns).toEqual(0);
   });
 
-  it('is initialized with three params', () => {
+  it("is initialized with three params", () => {
     const csp = new CSP(undefined, domains, neighbors, constraints);
 
     // Focus on being able to correctly get variables
@@ -42,14 +42,14 @@ describe('csp object instance', () => {
   const second_valid_assignments = domains[first_class][1];
   const tmp_assignment: LooseObject<string[]> = {};
 
-  it('correctly uses CSP.assign() to assign', () => {
+  it("correctly uses CSP.assign() to assign", () => {
     csp.assign(first_class, first_valid_attributes, assignment);
     tmp_assignment[first_class] = first_valid_attributes;
     expect(assignment).toEqual(tmp_assignment);
     expect(csp.nassigns).toEqual(1);
   });
 
-  it('correctly uses CSP.assign() to reassign', () => {
+  it("correctly uses CSP.assign() to reassign", () => {
     csp.assign(first_class, second_valid_assignments, assignment);
     tmp_assignment[first_class] = second_valid_assignments;
     // # TODO: should this be 1? Can update my class logic.
@@ -59,7 +59,7 @@ describe('csp object instance', () => {
 
   const [second_class, third_class] = variables.slice(1, 3);
 
-  it('correctly uses CSP.unassign()', () => {
+  it("correctly uses CSP.unassign()", () => {
     expect(csp.nassigns).toEqual(2);
     csp.unassign(first_class, assignment);
     expect(assignment).toEqual({});
@@ -83,41 +83,31 @@ describe('csp object instance', () => {
   assignment = {};
   csp = new CSP(undefined, domains, neighbors, constraints);
   const sixth_valid_attributes = domains[first_class][5];
-  it('correctly implements nconflicts()', () => {
+  it("correctly implements nconflicts()", () => {
     // test with no assignments
-    expect(
-      csp.nconflicts(first_class, first_valid_attributes, assignment)
-    ).toEqual(0);
+    expect(csp.nconflicts(first_class, first_valid_attributes, assignment)).toEqual(0);
 
     // test with two conflicting assignment values (time and room)
     csp.assign(first_class, first_valid_attributes, assignment);
     csp.assign(second_class, second_valid_assignments, assignment);
-    expect(
-      csp.nconflicts(first_class, first_valid_attributes, assignment)
-    ).toEqual(1);
+    expect(csp.nconflicts(first_class, first_valid_attributes, assignment)).toEqual(1);
 
     // assign to exactly the same attribute set as first_class
     csp.assign(second_class, first_valid_attributes, assignment);
-    expect(
-      csp.nconflicts(first_class, first_valid_attributes, assignment)
-    ).toEqual(1);
+    expect(csp.nconflicts(first_class, first_valid_attributes, assignment)).toEqual(1);
 
     // test with two non-conflicting assignments
     csp.assign(second_class, sixth_valid_attributes, assignment);
-    expect(
-      csp.nconflicts(first_class, first_valid_attributes, assignment)
-    ).toEqual(0);
-    expect(
-      csp.nconflicts(second_class, sixth_valid_attributes, assignment)
-    ).toEqual(0);
+    expect(csp.nconflicts(first_class, first_valid_attributes, assignment)).toEqual(0);
+    expect(csp.nconflicts(second_class, sixth_valid_attributes, assignment)).toEqual(0);
   });
 
-  it('displays correctly', () => {
+  it("displays correctly", () => {
     // Yeah, this is kinda a dumb test.
     expect(csp.display(assignment)).toEqual(console.log(assignment));
   });
 
-  it('correctly implements conflicted_vars()', () => {
+  it("correctly implements conflicted_vars()", () => {
     assignment = {};
     variables.forEach(variable => {
       assignment[variable] = first_valid_attributes;

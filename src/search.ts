@@ -18,7 +18,7 @@ export class Problem<T> {
   many actions, consider yielding them one at a time in an
   iterator, rather than building them all at once.*/
   action = (_state: T) => {
-    throw Error('Not Implemented');
+    throw Error("Not Implemented");
   };
 
   /* Return the state that results from executing the given
@@ -26,7 +26,7 @@ export class Problem<T> {
   self.actions(state).*/
   // TODO: add action type
   result = (_state: T, _action: any) => {
-    throw Error('Not Implemented');
+    throw Error("Not Implemented");
   };
 
   /* Return True if the state is a goal. The default method compares the
@@ -54,6 +54,6 @@ export class Problem<T> {
   /* For optimization problems, each state has a value.  Hill Climbing
   and related algorithms try to maximize this value. */
   value = (_state: T) => {
-    throw Error('Not Implemented');
+    throw Error("Not Implemented");
   };
 }

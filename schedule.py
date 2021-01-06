@@ -1,7 +1,8 @@
-from tools.aima.csp import backtracking_search, min_conflicts, CSP
 import itertools
 import timeit
+
 from schedule_logic import *
+from tools.aima.csp import CSP, backtracking_search, min_conflicts
 
 
 def check_room(a_class):
@@ -222,7 +223,7 @@ attributes["rooms"] = math_stat_rooms + cs_rooms + \
 
 # derive problem variables from assignments
 variables = classes = get_variables(user_constraints)
-
+print(classes)
 # each variable and their neighbors
 neighbors = get_neighbors(variables)
 

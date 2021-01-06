@@ -1,5 +1,5 @@
-import { LooseObject } from './interfaces';
-import { Problem } from './search';
+import { LooseObject } from "./interfaces";
+import { Problem } from "./search";
 
 /* This class describes finite-domain Constraint Satisfaction Problems.
     A CSP is specified by the following inputs:
@@ -52,7 +52,7 @@ export class CSP<T extends string> extends Problem<T[]> {
     variables: T[] | undefined,
     domains: LooseObject<T[][]>,
     neighbors: LooseObject<T[]>,
-    constraints: (c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean
+    constraints: (c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean,
   ) {
     // const initial: any = [];
     super([]);
@@ -81,21 +81,15 @@ just call assign for that. */
   };
 
   /* Return the number of conflicts var=val has with other variables. */
-  nconflicts = (
-    variable: T,
-    val: T[],
-    assignment: LooseObject<T[]>
-  ): number => {
+  nconflicts = (variable: T, val: T[], assignment: LooseObject<T[]>): number => {
     // Subclasses may implement this (conflict function) more efficiently
     const conflict = (var2: T) => {
       return (
-        assignment.hasOwnProperty(var2) &&
-        !this.constraints(variable, val, var2, assignment[var2])
+        assignment.hasOwnProperty(var2) && !this.constraints(variable, val, var2, assignment[var2])
       );
     };
 
-    return Object.keys(this.neighbors).filter((v: string) => conflict(v as T))
-      .length;
+    return Object.keys(this.neighbors).filter((v: string) => conflict(v as T)).length;
   };
 
   /* Show a human-readable representation of the CSP."""

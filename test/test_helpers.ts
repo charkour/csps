@@ -1,21 +1,16 @@
-import { LooseObject } from '../src/interfaces';
+import { LooseObject } from "../src/interfaces";
 
 // https://stackoverflow.com/a/43053803/9931154
 const cartesian = <K, T extends Array<any>>(...a: T): K =>
   a.reduce((a, b) =>
-    a.flatMap((d: T) =>
-      b.map((e: T) => ([d, e] as Array<any> & { flat(): Array<any> }).flat())
-    )
+    a.flatMap((d: T) => b.map((e: T) => ([d, e] as Array<any> & { flat(): Array<any> }).flat())),
   );
 
 const get_possible_domain_values = (attribute_list: string[][]): string[][] => {
   return cartesian<string[][], string[][]>(...attribute_list);
 };
 
-const get_domains = <T extends Array<string>>(
-  variables: T,
-  possible_domain_values: T[]
-) => {
+const get_domains = <T extends Array<string>>(variables: T, possible_domain_values: T[]) => {
   const domains: LooseObject<T[]> = {};
   variables.forEach((variable: string) => {
     domains[variable] = possible_domain_values as T[];
@@ -38,7 +33,7 @@ export const constraints = (
   class1: string,
   c1Attributes: string[],
   class2: string,
-  c2Attributes: string[]
+  c2Attributes: string[],
 ): boolean => {
   /*
     Constraints for class scheduling
@@ -53,29 +48,23 @@ export const constraints = (
   }
 
   // Check to make sure faculty is not teaching at the same time
-  if (
-    c1Attributes[0] === c2Attributes[0] &&
-    c1Attributes[2] === c2Attributes[2]
-  ) {
+  if (c1Attributes[0] === c2Attributes[0] && c1Attributes[2] === c2Attributes[2]) {
     return false;
   }
 
   // Check to make sure class is not in the same room at the same time
-  if (
-    c1Attributes[0] === c2Attributes[0] &&
-    c1Attributes[1] === c2Attributes[1]
-  ) {
+  if (c1Attributes[0] === c2Attributes[0] && c1Attributes[1] === c2Attributes[1]) {
     return false;
   }
   return true;
 };
 
 // some values for testing
-const classes = ['cs108', 'cs112', 'cs212', 'cs214'];
+const classes = ["cs108", "cs112", "cs212", "cs214"];
 export const variables = classes;
-const faculty = ['norman', 'vanderlinden', 'adams'];
-const times = ['mwf800', 'mwf900'];
-const rooms = ['nh253', 'sb382'];
+const faculty = ["norman", "vanderlinden", "adams"];
+const times = ["mwf800", "mwf900"];
+const rooms = ["nh253", "sb382"];
 const attribute_list = [times, rooms, faculty];
 const possible_domain_values = get_possible_domain_values(attribute_list);
 export const domains = get_domains(variables, possible_domain_values);

@@ -16,13 +16,10 @@
   },
   "extensions": {
     "recommendations": [
-      "EditorConfig.EditorConfig",
       "esbenp.prettier-vscode",
       "dbaeumer.vscode-eslint",
       "DavidAnson.vscode-markdownlint",
-      "streetsidesoftware.code-spell-checker",
-      "infeng.vscode-react-typescript",
-      "mscolnick.export-typescript"
+      "streetsidesoftware.code-spell-checker"
     ]
   }
 }

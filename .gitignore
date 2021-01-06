@@ -1,3 +1,6 @@
+*.log
+node_modules
+dist
 tools/
 .idea
 *.DS_Store
