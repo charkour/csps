@@ -1,25 +1,3 @@
-# CSPS
-
-Tools to solve [constraint satisfaction problems](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem): **C**onstraint **S**atisfaction **P**roblem **S**olvers.
-
-![npm](https://img.shields.io/npm/v/csps.svg?cacheSeconds=2592000)
-![Node](https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/csps.svg?cacheSeconds=2592000)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/charkour/csps/CI.svg?cacheSeconds=2592000)
-
-> Inspired by [Russell and Norvig's "Artificial Intelligence - A Modern Approach" Python code](https://github.com/aimacode/aima-python) and modified under the MIT license.
-
-## Installation and Example Usage
-
-install:
-
-```sh
-npm i csps
-```
-
-app.ts:
-
-```ts
 import { CSP, min_conflicts } from "csps";
 
 // Setup your problem
@@ -85,16 +63,3 @@ const aCSP = new CSP<string>(variables, domains, neighbors, constraints);
 // run min_conflicts on problem
 const res = min_conflicts(aCSP);
 console.log(res);
-// {
-//   cs108: [ 'mwf800', 'sb382', 'norman' ],
-//   cs112: [ 'mwf900', 'nh253', 'norman' ],
-//   cs212: [ 'mwf800', 'nh253', 'vanderlinden' ],
-//   cs214: [ 'mwf900', 'sb382', 'adams' ]
-// } // or something similar.
-```
-
-View the [example](https://github.com/charkour/csps/tree/main/example) for information on how to run the example locally.
-
-## Contributing
-
-Please feel free to create issues or make PRs.
