@@ -1,9 +1,12 @@
 import { LooseObject } from "../src/interfaces";
 
+// https://stackoverflow.com/a/39838385/9931154
+const flatMap = (f: Function, xs: any[]) => xs.reduce((acc: any, x: any) => acc.concat(f(x)), []);
+
 // https://stackoverflow.com/a/43053803/9931154
 const cartesian = <K, T extends Array<any>>(...a: T): K =>
   a.reduce((a, b) =>
-    a.flatMap((d: T) => b.map((e: T) => ([d, e] as Array<any> & { flat(): Array<any> }).flat())),
+    flatMap((d: T) => b.map((e: T) => ([d, e] as Array<any> & { flat(): Array<any> }).flat()), a),
   );
 
 const get_possible_domain_values = (attribute_list: string[][]): string[][] => {
@@ -20,8 +23,8 @@ const get_domains = <T extends Array<string>>(variables: T, possible_domain_valu
 
 const get_neighbors = <T extends Array<string>>(variables: T) => {
   const neighbors: LooseObject<T> = {};
-  variables.forEach(variable => {
-    neighbors[variable] = variables.filter(neighbor => {
+  variables.forEach((variable: string) => {
+    neighbors[variable] = variables.filter((neighbor: string) => {
       return neighbor !== variable;
     }) as T;
   });
