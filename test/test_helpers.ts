@@ -3,11 +3,14 @@ import { LooseObject } from "../src/interfaces";
 // https://stackoverflow.com/a/39838385/9931154
 const flatMap = (f: Function, xs: any[]) => xs.reduce((acc: any, x: any) => acc.concat(f(x)), []);
 
+/// https://stackoverflow.com/a/60677733/9931154
+const flat = (arr: any[]) => {
+  return [].concat.apply([], arr);
+};
+
 // https://stackoverflow.com/a/43053803/9931154
 const cartesian = <K, T extends Array<any>>(...a: T): K =>
-  a.reduce((a, b) =>
-    flatMap((d: T) => b.map((e: T) => ([d, e] as Array<any> & { flat(): Array<any> }).flat()), a),
-  );
+  a.reduce((a, b) => flatMap((d: T) => b.map((e: T) => flat([d, e])), a));
 
 const get_possible_domain_values = (attribute_list: string[][]): string[][] => {
   return cartesian<string[][], string[][]>(...attribute_list);
