@@ -28,14 +28,14 @@
   },
   "name": "csps",
   "author": "Charles Kornoelje",
-  "module": "dist/csp.esm.js",
+  "module": "dist/csps.esm.js",
   "size-limit": [
     {
-      "path": "dist/csp.cjs.production.min.js",
+      "path": "dist/csps.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/csp.esm.js",
+      "path": "dist/csps.esm.js",
       "limit": "10 KB"
     }
   ],
