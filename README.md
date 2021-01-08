@@ -1,10 +1,13 @@
-# **C**onstraint **S**atisfaction **P**roblem **S**olvers
+# CSPS
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+Tools to solve [constraint satisfaction problems](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem): **C**onstraint **S**atisfaction **P**roblem **S**olvers.
+
+![npm](https://img.shields.io/npm/v/csps.svg?cacheSeconds=2592000)
 ![Node](https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000)
-TODO: add one for builds, npm bundle size, npm package version
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/csps.svg?cacheSeconds=2592000)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/charkour/csps/CI.svg?cacheSeconds=2592000)
 
-> Tools to solve [constraint satisfaction problems](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem). Inspired by [Russell and Norvig's "Artificial Intelligence - A Modern Approach" Python code](https://github.com/aimacode/aima-python) and modified under the MIT license.
+> Inspired by [Russell and Norvig's "Artificial Intelligence - A Modern Approach" Python code](https://github.com/aimacode/aima-python) and modified under the MIT license.
 
 ## Installation and Example Usage
 

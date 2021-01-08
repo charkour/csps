@@ -1,6 +1,18 @@
 {
+  "homepage": "https://github.com/charkour/csps",
+  "bugs": {
+    "url": "https://github.com/charkour/csps/issues"
+  },
+  "description": "Tools to solve constraint satisfaction problems",
   "version": "1.0.2",
   "license": "MIT",
+  "keywords": [
+    "constraint-satisfaction-problems"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charkour/csps.git"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
