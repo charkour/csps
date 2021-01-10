@@ -2,12 +2,18 @@
 
 Tools to solve [constraint satisfaction problems](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem): **C**onstraint **S**atisfaction **P**roblem **S**olvers.
 
-![npm](https://img.shields.io/npm/v/csps.svg?cacheSeconds=2592000)
+![npm](https://img.shields.io/npm/v/csps.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/csps.svg?cacheSeconds=2592000)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/charkour/csps/CI.svg?cacheSeconds=2592000)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/csps.svg)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/charkour/csps/CI.svg)
 
 > Inspired by [Russell and Norvig's "Artificial Intelligence - A Modern Approach" Python code](https://github.com/aimacode/aima-python) and modified under the MIT license.
+
+## Background
+
+A CSP is a specific type of problem that is represented by states and a goal state. The factored representation of each problem state consists of a set of variables and a value for each (set of attributes). The problem is considered solve, when all values for each variable satisfy all constraints (Russell, Norvig 2010).
+
+Some example of CSPs would be Sudoku, scheduling, map-coloring, n-queens. The tools in this CSPS package help setup and solve CSPs.
 
 ## Installation and Example Usage
 
@@ -17,66 +23,35 @@ install:
 npm i csps
 ```
 
-app.ts:
+index.ts:
 
 ```ts
 import { CSP, min_conflicts } from "csps";
 
 // Setup your problem
-const variables = ["cs108", "cs112", "cs212", "cs214"];
-const possible_attributes = [
-  ["mwf800", "nh253", "norman"],
-  ["mwf800", "nh253", "vanderlinden"],
-  ["mwf800", "nh253", "adams"],
-  ["mwf800", "sb382", "norman"],
-  ["mwf800", "sb382", "vanderlinden"],
-  ["mwf800", "sb382", "adams"],
-  ["mwf900", "nh253", "norman"],
-  ["mwf900", "nh253", "vanderlinden"],
-  ["mwf900", "nh253", "adams"],
-  ["mwf900", "sb382", "norman"],
-  ["mwf900", "sb382", "vanderlinden"],
-  ["mwf900", "sb382", "adams"],
+const variables = [
+  /* array of strings */
 ];
 const domains = {
-  cs108: possible_attributes,
-  cs112: possible_attributes,
-  cs212: possible_attributes,
-  cs214: possible_attributes,
+  /* var: possible_attributes<string>[] */
 };
 const neighbors = {
-  cs108: ["cs112", "cs212", "cs214"],
-  cs112: ["cs108", "cs212", "cs214"],
-  cs212: ["cs108", "cs112", "cs214"],
-  cs214: ["cs108", "cs112", "cs212"],
+  /* var: neighbors<string>[] */
 };
 const constraints = (
-  class1: string,
-  c1Attributes: string[],
-  class2: string,
-  c2Attributes: string[],
+  var1: string,
+  var1Attributes: string[],
+  var2: string,
+  var2Attributes: string[],
 ): boolean => {
-  /*
-    Constraints for class scheduling
-    c1 and c2 are tuples in the form (time, room, faculty)
-    returns true if constraints are met.
-    The constraint that there is only one section of class
-    is implicit because classes are variables.
-  */
-  // Return true if same class.
-  if (class1 === class2) {
+  // Return true if same variable.
+  if (var1 === var2) {
     return true;
   }
 
-  // Check to make sure faculty is not teaching at the same time
-  if (c1Attributes[0] === c2Attributes[0] && c1Attributes[2] === c2Attributes[2]) {
-    return false;
-  }
+  // more constraints that return false...
 
-  // Check to make sure class is not in the same room at the same time
-  if (c1Attributes[0] === c2Attributes[0] && c1Attributes[1] === c2Attributes[1]) {
-    return false;
-  }
+  // else, return true
   return true;
 };
 
@@ -85,15 +60,9 @@ const aCSP = new CSP<string>(variables, domains, neighbors, constraints);
 // run min_conflicts on problem
 const res = min_conflicts(aCSP);
 console.log(res);
-// {
-//   cs108: [ 'mwf800', 'sb382', 'norman' ],
-//   cs112: [ 'mwf900', 'nh253', 'norman' ],
-//   cs212: [ 'mwf800', 'nh253', 'vanderlinden' ],
-//   cs214: [ 'mwf900', 'sb382', 'adams' ]
-// } // or something similar.
 ```
 
-View the [example](https://github.com/charkour/csps/tree/main/example) for information on how to run the example locally.
+View the [example](https://github.com/charkour/csps/tree/main/example) for working code.
 
 ## Contributing
 
