@@ -85,21 +85,21 @@
 		<div class="col-9 col-content">
 			<div class="tsd-panel">
 				<a href="#csps" id="csps" style="color: inherit; text-decoration: none;">
-					<h1>CSPS</h1>
+					<h1>csps</h1>
 				</a>
 				<p>Tools to solve <a href="https://en.wikipedia.org/wiki/Constraint_satisfaction_problem">constraint satisfaction problems</a>: <strong>C</strong>onstraint <strong>S</strong>atisfaction <strong>P</strong>roblem <strong>S</strong>olvers.</p>
-				<p><img src="https://img.shields.io/npm/v/csps.svg" alt="npm">
+				<p><img src="https://img.shields.io/npm/v/csps.svg?link=https://www.npmjs.com/package/csps" alt="npm">
 					<img src="https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000" alt="Node">
-					<img src="https://img.shields.io/bundlephobia/minzip/csps.svg" alt="npm bundle size">
-				<img src="https://img.shields.io/github/workflow/status/charkour/csps/CI.svg" alt="GitHub Workflow Status"></p>
+					<img src="https://img.shields.io/bundlephobia/minzip/csps.svg?link=https://www.npmjs.com/package/csps" alt="npm bundle size">
+				<img src="https://img.shields.io/github/workflow/status/charkour/csps/CI.svg?link=https://github.com/charkour/csps" alt="GitHub Workflow Status"></p>
 				<blockquote>
 					<p>Inspired by <a href="https://github.com/aimacode/aima-python">Russell and Norvig&#39;s &quot;Artificial Intelligence - A Modern Approach&quot; Python code</a> and modified under the MIT license.</p>
 				</blockquote>
 				<a href="#background" id="background" style="color: inherit; text-decoration: none;">
 					<h2>Background</h2>
 				</a>
-				<p>A CSP is a specific type of problem that is represented by states and a goal state. The factored representation of each problem state consists of a set of variables and a value for each (set of attributes). The problem is considered solve, when all values for each variable satisfy all constraints (Russell, Norvig 2010).</p>
-				<p>Some example of CSPs would be Sudoku, scheduling, map-coloring, n-queens. The tools in this CSPS package help setup and solve CSPs.</p>
+				<p>A CSP is a specific type of problem that is represented by states and a goal state. The factored representation of each problem state consists of a set of variables and a value (set of attributes) for each. The problem is considered solve, when all values for each variable satisfy all constraints (Russell, Norvig 2010).</p>
+				<p>Some example of CSPs would be Sudoku, crosswords, scheduling, map-coloring, n-queens, zebra puzzle, and many others. The tools in this <code>csps</code> package help setup and solve CSPs.</p>
 				<a href="#installation-and-example-usage" id="installation-and-example-usage" style="color: inherit; text-decoration: none;">
 					<h2>Installation and Example Usage</h2>
 				</a>
@@ -142,11 +142,36 @@
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">res</span><span style="color: #000000"> = </span><span style="color: #795E26">min_conflicts</span><span style="color: #000000">(</span><span style="color: #001080">aCSP</span><span style="color: #000000">);</span>
 <span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">res</span><span style="color: #000000">);</span>
 </code></pre>
-				<p>View the <a href="https://github.com/charkour/csps/tree/main/example">example</a> for working code.</p>
+				<a href="#demo" id="demo" style="color: inherit; text-decoration: none;">
+					<h3>Demo</h3>
+				</a>
+				<p>View the <a href="https://github.com/charkour/csps/tree/main/example">example</a> for more in-depth example code.</p>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h2>API</h2>
+				</a>
+				<a href="#search-functions" id="search-functions" style="color: inherit; text-decoration: none;">
+					<h3>Search Functions</h3>
+				</a>
+				<p>Currently, Min-conflicts Hill Climbing is the only search function supported.</p>
+				<ul>
+					<li><input checked="" disabled="" type="checkbox"> Min-conflicts Hill Climbing</li>
+					<li><input disabled="" type="checkbox"> AC3</li>
+					<li><input disabled="" type="checkbox"> AC3b</li>
+					<li><input disabled="" type="checkbox"> AC4</li>
+					<li><input disabled="" type="checkbox"> Backtracking</li>
+				</ul>
+				<p>Please view the <a href="https://charkour.github.io/csps/">docs</a> to see the full API.</p>
 				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
 					<h2>Contributing</h2>
 				</a>
 				<p>Please feel free to create issues or make PRs.</p>
+				<a href="#acknowledgements" id="acknowledgements" style="color: inherit; text-decoration: none;">
+					<h2>Acknowledgements</h2>
+				</a>
+				<ul>
+					<li>Thank you to Russell and Norvig for their <em>AIMA</em> textbook and code.</li>
+					<li>Thanks you to TSDX, TypeDoc and other open source packages that made this package possible.</li>
+				</ul>
 			</div>
 			<footer class="with-border-bottom">
 				<div class="tsd-legend-group">
