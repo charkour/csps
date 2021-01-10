@@ -63,3 +63,9 @@ const aCSP = new CSP<string>(variables, domains, neighbors, constraints);
 // run min_conflicts on problem
 const res = min_conflicts(aCSP);
 console.log(res);
+// {
+//   cs108: [ 'mwf800', 'sb382', 'norman' ],
+//   cs112: [ 'mwf900', 'nh253', 'norman' ],
+//   cs212: [ 'mwf800', 'nh253', 'vanderlinden' ],
+//   cs214: [ 'mwf900', 'sb382', 'adams' ]
+// } // or something similar.
