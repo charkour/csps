@@ -6,3 +6,4 @@ tools/
 *.DS_Store
 aima_python/
 *.js
+docs

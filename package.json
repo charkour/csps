@@ -30,7 +30,8 @@
     "fix": "tsdx lint src test --fix",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "build:docs": "typedoc --out docs src --theme node_modules/eledoc/bin/default/"
   },
   "peerDependencies": {},
   "husky": {
@@ -55,11 +56,13 @@
     "@size-limit/preset-small-lib": "^4.9.1",
     "@types/jest": "26.0.19",
     "@types/seedrandom": "2.4.28",
+    "eledoc": "0.2.1",
     "husky": "^4.3.6",
     "seedrandom": "3.0.5",
     "size-limit": "^4.9.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.0.3",
+    "typedoc": "0.20.14",
     "typescript": "^4.1.3"
   }
 }
