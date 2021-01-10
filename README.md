@@ -2,10 +2,10 @@
 
 Tools to solve [constraint satisfaction problems](https://en.wikipedia.org/wiki/Constraint_satisfaction_problem): **C**onstraint **S**atisfaction **P**roblem **S**olvers.
 
-![npm](https://img.shields.io/npm/v/csps.svg?link=https://www.npmjs.com/package/csps)
-![Node](https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/csps.svg?link=https://www.npmjs.com/package/csps)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/charkour/csps/CI.svg?link=https://github.com/charkour/csps)
+<a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/npm/v/csps.svg" alt="npm version"></a>
+<a href="" disabled><img src="https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000" alt="node >= 10"></a>
+<a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/bundlephobia/minzip/csps.svg" alt="size < 1k"></a>
+<a href="https://github.com/charkour/csps"><img src="https://img.shields.io/github/workflow/status/charkour/csps/CI.svg" alt="build status"></a>
 
 > Inspired by [Russell and Norvig's "Artificial Intelligence - A Modern Approach" Python code](https://github.com/aimacode/aima-python) and modified under the MIT license.
 
