@@ -1,13 +1,6 @@
 import seedrandom from "seedrandom";
-import {
-  argmin_random_tie,
-  CSP,
-  identity,
-  min_conflicts,
-  min_conflicts_value,
-  random_choice,
-  shuffle_array,
-} from "../src";
+import { CSP, min_conflicts, min_conflicts_value } from "../src";
+import { argmin_random_tie, identity, random_choice, shuffle_array } from "../src/utils";
 import { constraints, domains, neighbors, variables } from "./test_helpers";
 // NOTE: changing the LOC in this file breaks tests with random.
 seedrandom("seed", { global: true });
@@ -19,11 +12,11 @@ describe("min_conflicts functions", () => {
   });
 
   it("correctly implements shuffle_array()", () => {
-    expect(shuffle_array([1, 2, 3, 4])).toEqual([2, 3, 4, 1]);
+    expect(shuffle_array([1, 2, 3, 4])).toEqual([3, 4, 1, 2]);
   });
 
   it("correctly implements random_choice()", () => {
-    expect(random_choice([1, 2, 3, 4])).toEqual(2);
+    expect(random_choice([1, 2, 3, 4])).toEqual(4);
   });
 
   it("correctly implements argmin_random_tie()", () => {
@@ -58,10 +51,10 @@ describe("min_conflicts functions", () => {
 
   it("correctly implements min_conflicts()", () => {
     expect(min_conflicts(aCSP)).toEqual({
-      cs108: ["mwf800", "nh253", "adams"],
-      cs112: ["mwf900", "nh253", "adams"],
-      cs212: ["mwf900", "sb382", "vanderlinden"],
-      cs214: ["mwf800", "sb382", "norman"],
+      cs108: ["mwf800", "nh253", "norman"],
+      cs112: ["mwf900", "sb382", "vanderlinden"],
+      cs212: ["mwf800", "sb382", "vanderlinden"],
+      cs214: ["mwf900", "nh253", "adams"],
     });
   });
 });
