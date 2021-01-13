@@ -87,4 +87,4 @@ Please feel free to create issues or make PRs.
 ## Acknowledgements
 
 - Thank you to Russell and Norvig for their _AIMA_ textbook and code.
-- Thanks you to TSDX, TypeDoc and other open source packages that made this package possible.
+- Thank you to TSDX, TypeDoc, and other open source packages that made this package possible.
