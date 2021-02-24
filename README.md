@@ -6,6 +6,7 @@ Tools to solve [constraint satisfaction problems](https://en.wikipedia.org/wiki/
 <a href="" disabled><img src="https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000" alt="node >= 10"></a>
 <a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/bundlephobia/minzip/csps.svg" alt="size < 1k"></a>
 <a href="https://github.com/charkour/csps"><img src="https://img.shields.io/github/workflow/status/charkour/csps/CI.svg" alt="build status"></a>
+<a href="https://www.npmjs.com/package/csps"><img src="hhttps://img.shields.io/david/charkour/csps" alt="zero deps"></a>
 
 > Inspired by [Russell and Norvig's "Artificial Intelligence - A Modern Approach" Python code](https://github.com/aimacode/aima-python) and modified under the MIT license.
 
