@@ -57,7 +57,7 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "4.10.1",
-    "@types/jest": "26.0.20",
+    "@types/jest": "26.0.21",
     "@types/seedrandom": "2.4.29",
     "eledoc": "0.2.1",
     "husky": "4.3.8",
