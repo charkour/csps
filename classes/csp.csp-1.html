@@ -205,8 +205,9 @@
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<span class="name">T</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>                    <div class="tsd-comment">
+						<span class="name">TAttributes</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>                    <div class="tsd-comment">
 							<div class="lead">
+								<p>extends object</p>
 							</div>
 						</div>
 					</li>
@@ -216,7 +217,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="search.problem.html" class="tsd-signature-type">Problem</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+						<a href="search.problem.html" class="tsd-signature-type">Problem</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/interfaces.html#variable" class="tsd-signature-type">Variable</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">CSP</span>
@@ -379,7 +380,7 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new CSP&lt;T&gt;<span class="tsd-signature-symbol">(</span>variables<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>, domains<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>, neighbors<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>, constraints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="csp.csp-1.html" class="tsd-signature-type">CSP</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">new CSP&lt;TAttributes&gt;<span class="tsd-signature-symbol">(</span>variables<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span>, domains<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>, neighbors<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>, constraints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="csp.csp-1.html" class="tsd-signature-type">CSP</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<div class="tsd-comment">
 						<div class="lead">
@@ -389,41 +390,41 @@
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-						<span class="name">T</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>                    </li>
+						<span class="name">TAttributes</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>                    </li>
 					</ul>
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">variables</span>: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>
+							<span class="name">variables</span>: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span>
 						</li>
 						<li>
-							<span class="name">domains</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="name">domains</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
 						</li>
 						<li>
-							<span class="name">neighbors</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="name">neighbors</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
 						</li>
 						<li>
 							<span class="name">constraints</span>: <span class="tsd-signature-type">function</span>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter-siganture">
 									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>c1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, c1Attr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>, c2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, c2Attr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>c1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, c1Attr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TAttributes</span>, c2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, c2Attr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 									</ul>
 									<ul class="tsd-descriptions">
 										<li class="tsd-description">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameters">
 												<li>
-													<span class="name">c1</span>: <span class="tsd-signature-type">T</span>
+													<span class="name">c1</span>: <span class="tsd-signature-type">string</span>
 												</li>
 												<li>
-													<span class="name">c1Attr</span>: <span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>
+													<span class="name">c1Attr</span>: <span class="tsd-signature-type">TAttributes</span>
 												</li>
 												<li>
-													<span class="name">c2</span>: <span class="tsd-signature-type">T</span>
+													<span class="name">c2</span>: <span class="tsd-signature-type">string</span>
 												</li>
 												<li>
-													<span class="name">c2Attr</span>: <span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>
+													<span class="name">c2Attr</span>: <span class="tsd-signature-type">TAttributes</span>
 												</li>
 											</ul>
 											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span>    </h4>
@@ -433,7 +434,7 @@
 							</ul>
 						</li>
 					</ul>
-					<h4 class="tsd-returns-title">Returns <a href="csp.csp-1.html" class="tsd-signature-type">CSP</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+					<h4 class="tsd-returns-title">Returns <a href="csp.csp-1.html" class="tsd-signature-type">CSP</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</ul>
 					<aside class="tsd-sources">
 						<p>Overrides <a href="search.problem.html">Problem</a>.<a href="search.problem.html#constructor">constructor</a></p>
@@ -448,49 +449,49 @@
 					<div class="tsd-signature tsd-kind-icon">constraints<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L52">csp.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L49">csp.ts:49</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-descriptions">
 					<a name="curr_domains" class="tsd-anchor"></a>
 					<h3>curr_<wbr>domains</h3>
-					<div class="tsd-signature tsd-kind-icon">curr_domains<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">curr_domains<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L53">csp.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L50">csp.ts:50</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-descriptions">
 					<a name="domains" class="tsd-anchor"></a>
 					<h3>domains</h3>
-					<div class="tsd-signature tsd-kind-icon">domains<span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">domains<span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L50">csp.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L47">csp.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-descriptions">
 					<a name="goal" class="tsd-anchor"></a>
 					<h3>goal</h3>
-					<div class="tsd-signature tsd-kind-icon">goal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">goal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="search.problem.html">Problem</a>.<a href="search.problem.html#goal">goal</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/search.ts#L13">search.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/search.ts#L13">search.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-descriptions">
 					<a name="initial" class="tsd-anchor"></a>
 					<h3>initial</h3>
-					<div class="tsd-signature tsd-kind-icon">initial<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">initial<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="search.problem.html">Problem</a>.<a href="search.problem.html#initial">initial</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/search.ts#L12">search.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/search.ts#L12">search.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -500,27 +501,27 @@
 					<div class="tsd-signature tsd-kind-icon">nassigns<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L54">csp.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L51">csp.ts:51</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-descriptions">
 					<a name="neighbors" class="tsd-anchor"></a>
 					<h3>neighbors</h3>
-					<div class="tsd-signature tsd-kind-icon">neighbors<span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">neighbors<span class="tsd-signature-symbol">:</span> <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L51">csp.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L48">csp.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-descriptions">
 					<a name="variables" class="tsd-anchor"></a>
 					<h3>variables</h3>
-					<div class="tsd-signature tsd-kind-icon">variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L49">csp.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L46">csp.ts:46</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -552,7 +553,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="search.problem.html">Problem</a>.<a href="search.problem.html#action">action</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/search.ts#L38">search.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/search.ts#L38">search.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -560,25 +561,32 @@
 					<a name="assign" class="tsd-anchor"></a>
 					<h3>assign</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">assign<span class="tsd-signature-symbol">(</span>variable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>, assignment<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">assign<span class="tsd-signature-symbol">(</span>variable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TAttributes</span>, assignment<span class="tsd-signature-symbol">: </span><a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
+					<div class="tsd-comment">
+						<div class="lead">
+							<p> Add {var: val} to assignment; Discard the old value if any.</p>
+						</div>
+					</div>
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">variable</span>: <span class="tsd-signature-type">T</span>
+							<span class="name">variable</span>: <span class="tsd-signature-type">string</span>
 						</li>
 						<li>
-							<span class="name">val</span>: <span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>
+							<span class="name">val</span>: <span class="tsd-signature-type">TAttributes</span>
 						</li>
 						<li>
-							<span class="name">assignment</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="name">assignment</span>: <a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span>
+							<div class="tsd-comment">
+							</div>
 						</li>
 					</ul>
 					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L83">csp.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L86">csp.ts:86</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -586,7 +594,7 @@
 					<a name="conflicted_vars" class="tsd-anchor"></a>
 					<h3>conflicted_<wbr>vars</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">conflicted_<wbr>vars<span class="tsd-signature-symbol">(</span>current<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">conflicted_<wbr>vars<span class="tsd-signature-symbol">(</span>current<span class="tsd-signature-symbol">: </span><a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<div class="tsd-comment">
 						<div class="lead">
@@ -597,14 +605,14 @@
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">current</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="name">current</span>: <a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span>
 						</li>
 					</ul>
-					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span></h4>
+					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>    <span class="tsd-signature-symbol">[]</span></h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L145">csp.ts:145</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L152">csp.ts:152</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -612,7 +620,7 @@
 					<a name="display" class="tsd-anchor"></a>
 					<h3>display</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">display<span class="tsd-signature-symbol">(</span>assignment<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">display<span class="tsd-signature-symbol">(</span>assignment<span class="tsd-signature-symbol">: </span><a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<div class="tsd-comment">
 						<div class="lead">
@@ -623,14 +631,14 @@
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">assignment</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="name">assignment</span>: <a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span>
 						</li>
 					</ul>
 					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L134">csp.ts:134</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L141">csp.ts:141</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -659,7 +667,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="search.problem.html">Problem</a>.<a href="search.problem.html#goal_test">goal_test</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/search.ts#L67">search.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/search.ts#L67">search.ts:67</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -667,7 +675,7 @@
 					<a name="nconflicts" class="tsd-anchor"></a>
 					<h3>nconflicts</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">nconflicts<span class="tsd-signature-symbol">(</span>variable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>, assignment<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">nconflicts<span class="tsd-signature-symbol">(</span>variable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TAttributes</span>, assignment<span class="tsd-signature-symbol">: </span><a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<div class="tsd-comment">
 						<div class="lead">
@@ -677,20 +685,20 @@
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">variable</span>: <span class="tsd-signature-type">T</span>
+							<span class="name">variable</span>: <span class="tsd-signature-type">string</span>
 						</li>
 						<li>
-							<span class="name">val</span>: <span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span>
+							<span class="name">val</span>: <span class="tsd-signature-type">TAttributes</span>
 						</li>
 						<li>
-							<span class="name">assignment</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="name">assignment</span>: <a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span>
 						</li>
 					</ul>
 					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L111">csp.ts:111</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L114">csp.ts:114</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -729,7 +737,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="search.problem.html">Problem</a>.<a href="search.problem.html#path_cost">path_cost</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/search.ts#L89">search.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/search.ts#L89">search.ts:89</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -759,7 +767,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="search.problem.html">Problem</a>.<a href="search.problem.html#result">result</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/search.ts#L52">search.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/search.ts#L52">search.ts:52</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -767,7 +775,7 @@
 					<a name="unassign" class="tsd-anchor"></a>
 					<h3>unassign</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">unassign<span class="tsd-signature-symbol">(</span>variable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, assignment<span class="tsd-signature-symbol">: </span><a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">unassign<span class="tsd-signature-symbol">(</span>variable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assignment<span class="tsd-signature-symbol">: </span><a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<div class="tsd-comment">
 						<div class="lead">
@@ -779,17 +787,17 @@
 					<h4 class="tsd-parameters-title">Parameters</h4>
 					<ul class="tsd-parameters">
 						<li>
-							<span class="name">variable</span>: <span class="tsd-signature-type">T</span>
+							<span class="name">variable</span>: <span class="tsd-signature-type">string</span>
 						</li>
 						<li>
-							<span class="name">assignment</span>: <a href="../interfaces/interfaces.looseobject.html" class="tsd-signature-type">LooseObject</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span>    <span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="name">assignment</span>: <a href="../modules/interfaces.html#currentdomain" class="tsd-signature-type">CurrentDomain</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAttributes</span><span class="tsd-signature-symbol">&gt;</span>
 						</li>
 					</ul>
 					<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span>    </h4>
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/csp.ts#L97">csp.ts:97</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/csp.ts#L100">csp.ts:100</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -816,7 +824,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="search.problem.html">Problem</a>.<a href="search.problem.html#value">value</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/charkour/csps/blob/cf3f814/src/search.ts#L100">search.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/charkour/csps/blob/ad098e6/src/search.ts#L100">search.ts:100</a></li>
 						</ul>
 					</aside>
 				</section>
