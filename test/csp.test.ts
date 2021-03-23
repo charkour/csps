@@ -1,12 +1,12 @@
 import { CSP } from "../src";
-import { LooseObject } from "../src/interfaces";
-import { constraints, domains, neighbors, variables } from "./test_helpers";
+import { CurrentDomain } from "../src/interfaces";
+import { ClassAttributes, constraints, domains, neighbors, variables } from "./test_helpers";
 
 // TODO: add a better ESLint Config
 
 describe("csp object instance", () => {
   it("is initialized with four params", () => {
-    const csp = new CSP<string>(variables, domains, neighbors, constraints);
+    const csp = new CSP<ClassAttributes>(variables, domains, neighbors, constraints);
     expect(csp.initial).toEqual([]);
     expect(csp.goal).toEqual(undefined);
 
@@ -35,12 +35,11 @@ describe("csp object instance", () => {
   });
 
   let csp = new CSP(undefined, domains, neighbors, constraints);
-  let assignment: LooseObject<string[]> = {};
+  let assignment: CurrentDomain<ClassAttributes> = {};
   const first_class = variables[0];
-  // # Note: all of the domain values are the same for every variable in this example
+  // Note: all of the domain values are the same for every variable in this example
   const first_valid_attributes = domains[first_class][0];
-  const second_valid_assignments = domains[first_class][1];
-  const tmp_assignment: LooseObject<string[]> = {};
+  const tmp_assignment: CurrentDomain<ClassAttributes> = {};
 
   it("correctly uses CSP.assign() to assign", () => {
     csp.assign(first_class, first_valid_attributes, assignment);
@@ -49,10 +48,12 @@ describe("csp object instance", () => {
     expect(csp.nassigns).toEqual(1);
   });
 
+  const second_valid_assignments = domains[first_class][1];
+
   it("correctly uses CSP.assign() to reassign", () => {
     csp.assign(first_class, second_valid_assignments, assignment);
     tmp_assignment[first_class] = second_valid_assignments;
-    // # TODO: should this be 1? Can update my class logic.
+    // TODO: should this be 1? Can update my class logic.
     expect(assignment).toEqual(tmp_assignment);
     expect(csp.nassigns).toEqual(2);
   });
@@ -63,20 +64,20 @@ describe("csp object instance", () => {
     expect(csp.nassigns).toEqual(2);
     csp.unassign(first_class, assignment);
     expect(assignment).toEqual({});
-    // # assert aCSP.nassigns == 0 # TODO: Should this be 0 instead of 2?
+    // assert aCSP.nassigns == 0 # TODO: Should this be 0 instead of 2?
     expect(csp.nassigns).toEqual(2);
 
     // remove a class that isn't in the schedule
     csp.assign(third_class, first_valid_attributes, assignment);
     csp.unassign(second_class, assignment);
-    const tmp_assignment: LooseObject<string[]> = {};
+    const tmp_assignment: CurrentDomain<ClassAttributes> = {};
     tmp_assignment[third_class] = first_valid_attributes;
     expect(assignment).toEqual(tmp_assignment);
     expect(csp.nassigns).toEqual(3);
 
     csp.unassign(third_class, assignment);
     expect(assignment).toEqual({});
-    // # TODO: should this be 0?
+    // TODO: should this be 0?
     expect(csp.nassigns).toEqual(3);
   });
 
@@ -114,7 +115,7 @@ describe("csp object instance", () => {
     });
     expect(csp.conflicted_vars(assignment)).toEqual(variables);
     expect(csp.conflicted_vars(assignment).length).toEqual(4);
-    // # change one of the conflicts
+    // change one of the conflicts
     assignment[first_class] = sixth_valid_attributes;
     const variables_copy = [...variables];
     var index = variables.indexOf(first_class);
@@ -125,7 +126,7 @@ describe("csp object instance", () => {
     expect(csp.conflicted_vars(assignment)).toEqual(variables_copy);
     expect(csp.conflicted_vars(assignment).length).toEqual(3);
 
-    // # change back to conflict
+    // change back to conflict
     assignment[first_class] = second_valid_assignments;
     expect(csp.conflicted_vars(assignment)).toEqual(variables);
     expect(csp.conflicted_vars(assignment).length).toEqual(4);

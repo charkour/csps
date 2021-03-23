@@ -29,10 +29,10 @@ export const shuffle_array = (arr: any[]): any[] => {
 /**
  * Returns the paramter
  *
- * @param  {any} val
- * @returns any
+ * @param  {T} val
+ * @returns T
  */
-export const identity = (val: any): any => val;
+export const identity = <T>(val: T): T => val;
 
 /**
  * Return a minimum element of seq; break ties at random.

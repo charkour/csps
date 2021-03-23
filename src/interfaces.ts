@@ -10,3 +10,9 @@
 export interface LooseObject<T> {
   [key: string]: T;
 }
+
+/** Type alias for Variable */
+export type Variable = string;
+
+/** Type alias for the current domain */
+export type CurrentDomain<T> = LooseObject<T>;
