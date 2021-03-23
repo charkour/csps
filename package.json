@@ -4,7 +4,7 @@
     "url": "https://github.com/charkour/csps/issues"
   },
   "description": "Tools to solve constraint satisfaction problems",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "keywords": [
     "constraint-satisfaction-problems",
