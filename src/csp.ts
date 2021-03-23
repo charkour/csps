@@ -1,8 +1,5 @@
-import { LooseObject } from "./interfaces";
+import { CurrentDomain, LooseObject, Variable } from "./interfaces";
 import { Problem } from "./search";
-
-// TODO: Will probably need to separate the T generic param into multiple different ones.
-// Once the attributes is separated into it's own object type.
 
 /**
  * This class describes finite-domain Constraint Satisfaction Problems.
@@ -42,36 +39,36 @@ import { Problem } from "./search";
  *
  * @export
  * @class CSP
- * @extends {Problem<T[]>}
- * @template T
+ * @extends {Problem<Variable[]>}
+ * @template TAttributes extends object
  */
-export class CSP<T extends string> extends Problem<T[]> {
-  variables: T[];
-  domains: LooseObject<T[][]>;
-  neighbors: LooseObject<T[]>;
-  constraints: (c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean;
-  curr_domains: LooseObject<T[][]> | undefined;
+export class CSP<TAttributes extends object> extends Problem<Variable[]> {
+  variables: Variable[];
+  domains: LooseObject<TAttributes[]>;
+  neighbors: LooseObject<Variable[]>;
+  constraints: (c1: Variable, c1Attr: TAttributes, c2: Variable, c2Attr: TAttributes) => boolean;
+  curr_domains: CurrentDomain<TAttributes> | undefined;
   nassigns: number;
 
   /**
    * Creates an instance of CSP. Construct a CSP problem. If variables is empty, it becomes domains.keys().
    *
-   * @param {(T[] | undefined)} variables
-   * @param {LooseObject<T[][]>} domains
-   * @param {LooseObject<T[]>} neighbors
-   * @param {(c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean} constraints
+   * @param {(Variable[] | undefined)} variables
+   * @param {LooseObject<TAttributes[]>} domains
+   * @param {LooseObject<Variable[]>} neighbors
+   * @param {(c1: Variable, c1Attr: TAttributes, c2: Variable, c2Attr: TAttributes) => boolean} constraints
    * @memberof CSP
    */
   constructor(
-    variables: T[] | undefined,
-    domains: LooseObject<T[][]>,
-    neighbors: LooseObject<T[]>,
-    constraints: (c1: T, c1Attr: T[], c2: T, c2Attr: T[]) => boolean,
+    variables: Variable[] | undefined,
+    domains: LooseObject<TAttributes[]>,
+    neighbors: LooseObject<Variable[]>,
+    constraints: (c1: Variable, c1Attr: TAttributes, c2: Variable, c2Attr: TAttributes) => boolean,
   ) {
     // const initial: any = [];
     super([]);
 
-    this.variables = variables || (Object.keys(domains) as T[]);
+    this.variables = variables || Object.keys(domains);
     this.domains = domains;
     this.neighbors = neighbors;
     this.constraints = constraints;
@@ -79,8 +76,14 @@ export class CSP<T extends string> extends Problem<T[]> {
     this.nassigns = 0;
   }
 
-  /* Add {var: val} to assignment; Discard the old value if any.*/
-  assign = (variable: T, val: T[], assignment: LooseObject<T[]>) => {
+  /**
+   *  Add {var: val} to assignment; Discard the old value if any.
+   *
+   * @param  {Variable} variable
+   * @param  {TAttributes} val
+   * @param  {CurrentDomain<TAttributes>} assignment
+   */
+  assign = (variable: Variable, val: TAttributes, assignment: CurrentDomain<TAttributes>) => {
     assignment[variable] = val;
     this.nassigns += 1;
   };
@@ -90,11 +93,11 @@ export class CSP<T extends string> extends Problem<T[]> {
    * DO NOT call this if you are changing a variable to a new value;
    * just call assign for that.
    *
-   * @param {T} variable
-   * @param {LooseObject<T[]>} assignment
+   * @param {Variable} variable
+   * @param {CurrentDomain<TAttributes>} assignment
    * @memberof CSP
    */
-  unassign = (variable: T, assignment: LooseObject<T[]>) => {
+  unassign = (variable: Variable, assignment: CurrentDomain<TAttributes>) => {
     if (assignment.hasOwnProperty(variable)) {
       delete assignment[variable];
     }
@@ -103,35 +106,39 @@ export class CSP<T extends string> extends Problem<T[]> {
   /**
    *  Return the number of conflicts var=val has with other variables.
    *
-   * @param {T} variable
-   * @param {T[]} val
-   * @param {LooseObject<T[]>} assignment
+   * @param {Variable} variable
+   * @param {TAttributes} val
+   * @param {CurrentDomain<TAttributes>} assignment
    * @memberof CSP
    */
-  nconflicts = (variable: T, val: T[], assignment: LooseObject<T[]>): number => {
+  nconflicts = (
+    variable: Variable,
+    val: TAttributes,
+    assignment: CurrentDomain<TAttributes>,
+  ): number => {
     /**
      * Subclasses may implement this (conflict function) more efficiently
      *
-     * @param {T} var2
+     * @param {Variable} var2
      * @return {*}  {boolean}
      */
-    const conflict = (var2: T): boolean => {
+    const conflict = (var2: Variable): boolean => {
       return (
         assignment.hasOwnProperty(var2) && !this.constraints(variable, val, var2, assignment[var2])
       );
     };
 
-    return Object.keys(this.neighbors).filter((v: string) => conflict(v as T)).length;
+    return Object.keys(this.neighbors).filter((v: string) => conflict(v)).length;
   };
 
   /**
    * Show a human-readable representation of the CSP.
    * Subclasses can print in a prettier way, or display with a GUI
    *
-   * @param {LooseObject<T[]>} assignment
+   * @param {CurrentDomain<TAttributes>} assignment
    * @memberof CSP
    */
-  display = (assignment: LooseObject<T[]>) => {
+  display = (assignment: CurrentDomain<TAttributes>) => {
     console.log(assignment);
   };
 
@@ -139,11 +146,11 @@ export class CSP<T extends string> extends Problem<T[]> {
    * Return a list of variables in current assignment that are in conflict
    * This is for min_conflicts search.
    *
-   * @param {LooseObject<T[]>} current
+   * @param {CurrentDomain<TAttributes>>} current
    * @memberof CSP
    */
-  conflicted_vars = (current: LooseObject<T[]>) => {
-    return this.variables.filter((variable: T) => {
+  conflicted_vars = (current: CurrentDomain<TAttributes>) => {
+    return this.variables.filter((variable: Variable) => {
       return this.nconflicts(variable, current[variable], current) > 0;
     });
   };

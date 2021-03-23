@@ -1,4 +1,4 @@
-import { LooseObject } from "../src/interfaces";
+import { LooseObject, Variable } from "../src/interfaces";
 
 // https://stackoverflow.com/a/39838385/9931154
 const flatMap = (f: Function, xs: any[]) => xs.reduce((acc: any, x: any) => acc.concat(f(x)), []);
@@ -12,14 +12,23 @@ const flat = (arr: any[]) => {
 const cartesian = <K, T extends Array<any>>(...a: T): K =>
   a.reduce((a, b) => flatMap((d: T) => b.map((e: T) => flat([d, e])), a));
 
-const get_possible_domain_values = (attribute_list: string[][]): string[][] => {
-  return cartesian<string[][], string[][]>(...attribute_list);
+const get_possible_domain_values = (attribute_list: string[][]): ClassAttributes[] => {
+  const product = cartesian<string[][], string[][]>(...attribute_list);
+  const possible_domains: ClassAttributes[] = [];
+  product.forEach((item: string[]) => {
+    possible_domains.push({
+      faculty: item[2],
+      room: item[1],
+      time: item[0],
+    });
+  });
+  return possible_domains;
 };
 
-const get_domains = <T extends Array<string>>(variables: T, possible_domain_values: T[]) => {
-  const domains: LooseObject<T[]> = {};
-  variables.forEach((variable: string) => {
-    domains[variable] = possible_domain_values as T[];
+const get_domains = <K>(variables: Variable[], possible_domain_values: K[]) => {
+  const domains: LooseObject<K[]> = {};
+  variables.forEach(variable => {
+    domains[variable] = possible_domain_values;
   });
   return domains;
 };
@@ -34,12 +43,11 @@ const get_neighbors = <T extends Array<string>>(variables: T) => {
   return neighbors;
 };
 
-// TODO: make the attributes type and object and not an array
 export const constraints = (
   class1: string,
-  c1Attributes: string[],
+  c1Attributes: ClassAttributes,
   class2: string,
-  c2Attributes: string[],
+  c2Attributes: ClassAttributes,
 ): boolean => {
   /*
     Constraints for class scheduling
@@ -54,12 +62,12 @@ export const constraints = (
   }
 
   // Check to make sure faculty is not teaching at the same time
-  if (c1Attributes[0] === c2Attributes[0] && c1Attributes[2] === c2Attributes[2]) {
+  if (c1Attributes.faculty === c2Attributes.faculty && c1Attributes.time === c2Attributes.time) {
     return false;
   }
 
   // Check to make sure class is not in the same room at the same time
-  if (c1Attributes[0] === c2Attributes[0] && c1Attributes[1] === c2Attributes[1]) {
+  if (c1Attributes.time === c2Attributes.time && c1Attributes.room === c2Attributes.room) {
     return false;
   }
   return true;
@@ -72,6 +80,15 @@ const faculty = ["norman", "vanderlinden", "adams"];
 const times = ["mwf800", "mwf900"];
 const rooms = ["nh253", "sb382"];
 const attribute_list = [times, rooms, faculty];
-const possible_domain_values = get_possible_domain_values(attribute_list);
-export const domains = get_domains(variables, possible_domain_values);
+const possible_domain_values: ClassAttributes[] = get_possible_domain_values(attribute_list);
+export const domains: LooseObject<ClassAttributes[]> = get_domains(
+  variables,
+  possible_domain_values,
+);
 export const neighbors = get_neighbors(variables);
+
+export interface ClassAttributes {
+  faculty: string;
+  room: string;
+  time: string;
+}
