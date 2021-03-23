@@ -62,7 +62,7 @@ export const constraints = (
   }
 
   // Check to make sure faculty is not teaching at the same time
-  if (c1Attributes.faculty === c2Attributes.faculty && c1Attributes.time === c2Attributes.time) {
+  if (c1Attributes.time === c2Attributes.time && c1Attributes.faculty === c2Attributes.faculty) {
     return false;
   }
 
