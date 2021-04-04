@@ -56,7 +56,7 @@
     }
   ],
   "devDependencies": {
-    "@size-limit/preset-small-lib": "4.10.1",
+    "@size-limit/preset-small-lib": "4.10.2",
     "@types/jest": "26.0.22",
     "@types/seedrandom": "3.0.0",
     "eledoc": "0.2.1",
