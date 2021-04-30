@@ -51,7 +51,7 @@ export const constraints = (
 ): boolean => {
   /*
     Constraints for class scheduling
-    c1 and c2 are tuples in the form (time, room, faculty)
+    c1 and c2 are objects in the form {time, room, faculty}
     returns true if constraints are met.
     The constraint that there is only one section of class
     is implicit because classes are variables.
