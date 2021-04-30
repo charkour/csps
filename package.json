@@ -31,17 +31,12 @@
     "test": "tsdx test",
     "lint": "tsdx lint src test",
     "fix": "tsdx lint src test --fix",
-    "prepare": "tsdx build",
+    "prepare": "tsdx build && husky install",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "build:docs": "typedoc --out docs src --theme node_modules/eledoc/bin/default/"
   },
   "peerDependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint src test"
-    }
-  },
   "name": "csps",
   "author": "Charles Kornoelje",
   "module": "dist/csps.esm.js",
@@ -60,7 +55,7 @@
     "@types/jest": "26.0.23",
     "@types/seedrandom": "3.0.0",
     "eledoc": "0.2.1",
-    "husky": "4.3.8",
+    "husky": "6.0.0",
     "seedrandom": "3.0.5",
     "size-limit": "4.10.2",
     "tsdx": "0.14.1",
