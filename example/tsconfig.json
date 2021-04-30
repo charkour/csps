@@ -1,0 +1,10 @@
+{
+  "files": ["index.ts"],
+  "compilerOptions": {
+    // Use to load local dependents
+    "baseUrl": ".",
+    "paths": {
+      "csps": ["../src"]
+    }
+  }
+}

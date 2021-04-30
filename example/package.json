@@ -1,7 +1,7 @@
 {
   "name": "example",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc index.ts"
   },
   "dependencies": {
     "csps": "latest",
