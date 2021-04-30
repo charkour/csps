@@ -91,11 +91,11 @@
 				</a>
 				<p>Tools to solve <a href="https://en.wikipedia.org/wiki/Constraint_satisfaction_problem">constraint satisfaction problems</a>: <strong>C</strong>onstraint <strong>S</strong>atisfaction <strong>P</strong>roblem <strong>S</strong>olvers.</p>
 				<p><a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/npm/v/csps.svg" alt="npm version"></a>
-					<a href="" disabled><img src="https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000" alt="node >= 10"></a>
-					<a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/bundlephobia/minzip/csps.svg" alt="size < 1k"></a>
+					<img src="https://img.shields.io/badge/node-%3E%3D10-blue.svg?cacheSeconds=2592000" alt="node &gt;= 10">
+					<a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/bundlephobia/minzip/csps.svg" alt="size &lt; 1k"></a>
 					<a href="https://github.com/charkour/csps"><img src="https://img.shields.io/github/workflow/status/charkour/csps/CI.svg" alt="build status"></a>
 					<a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/david/charkour/csps" alt="zero deps"></a>
-				<a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/npm/dt/csps.svg" alt="Downloads"></a></p>
+				<a href="https://www.npmjs.com/package/csps"><img src="https://img.shields.io/npm/dt/csps.svg" alt="downloads"></a></p>
 				<blockquote>
 					<p>Inspired by <a href="https://github.com/aimacode/aima-python">Russell and Norvig&#39;s &quot;Artificial Intelligence - A Modern Approach&quot; Python code</a> and modified under the MIT license.</p>
 				</blockquote>
@@ -113,21 +113,26 @@
 				<p>index.ts:</p>
 				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">CSP</span><span style="color: #000000">, </span><span style="color: #001080">min_conflicts</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;csps&quot;</span><span style="color: #000000">;</span>
 
+<span style="color: #008000">// define the attributes on your variable</span>
+<span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">VariableAttributes</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #008000">// {[key: string]: string}</span>
+<span style="color: #000000">}</span>
+
 <span style="color: #008000">// Setup your problem</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">variables</span><span style="color: #000000"> = [</span>
 <span style="color: #000000">  </span><span style="color: #008000">/* array of strings */</span>
 <span style="color: #000000">];</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">domains</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">  </span><span style="color: #008000">/* var: possible_attributes&lt;string&gt;[] */</span>
+<span style="color: #000000">  </span><span style="color: #008000">/* var: possible_attributes (type: VariableAttributes[]) */</span>
 <span style="color: #000000">};</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">neighbors</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">  </span><span style="color: #008000">/* var: neighbors&lt;string&gt;[] */</span>
+<span style="color: #000000">  </span><span style="color: #008000">/* var: neighbors (type: &lt;string&gt;[]) */</span>
 <span style="color: #000000">};</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #795E26">constraints</span><span style="color: #000000"> = (</span>
 <span style="color: #000000">  </span><span style="color: #001080">var1</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">var1Attributes</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">[],</span>
+<span style="color: #000000">  </span><span style="color: #001080">var1Attributes</span><span style="color: #000000">: </span><span style="color: #267F99">VariableAttributes</span><span style="color: #000000">[],</span>
 <span style="color: #000000">  </span><span style="color: #001080">var2</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">var2Attributes</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">[],</span>
+<span style="color: #000000">  </span><span style="color: #001080">var2Attributes</span><span style="color: #000000">: </span><span style="color: #267F99">VariableAttributes</span><span style="color: #000000">[],</span>
 <span style="color: #000000">): </span><span style="color: #267F99">boolean</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #008000">// Return true if same variable.</span>
 <span style="color: #000000">  </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">var1</span><span style="color: #000000"> === </span><span style="color: #001080">var2</span><span style="color: #000000">) {</span>
@@ -140,11 +145,16 @@
 <span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span><span style="color: #000000">;</span>
 <span style="color: #000000">};</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aCSP</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">CSP</span><span style="color: #000000">&lt;</span><span style="color: #267F99">string</span><span style="color: #000000">&gt;(</span><span style="color: #001080">variables</span><span style="color: #000000">, </span><span style="color: #001080">domains</span><span style="color: #000000">, </span><span style="color: #001080">neighbors</span><span style="color: #000000">, </span><span style="color: #001080">constraints</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aCSP</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">CSP</span><span style="color: #000000">&lt;</span><span style="color: #267F99">VariableAttributes</span><span style="color: #000000">&gt;(</span><span style="color: #001080">variables</span><span style="color: #000000">, </span><span style="color: #001080">domains</span><span style="color: #000000">, </span><span style="color: #001080">neighbors</span><span style="color: #000000">, </span><span style="color: #001080">constraints</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// run min_conflicts on problem</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">res</span><span style="color: #000000"> = </span><span style="color: #795E26">min_conflicts</span><span style="color: #000000">(</span><span style="color: #001080">aCSP</span><span style="color: #000000">);</span>
 <span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">res</span><span style="color: #000000">);</span>
+<span style="color: #008000">// {</span>
+<span style="color: #008000">//   var1: { attr1: &#039;value1&#039;, attr2: &#039;value1&#039;, attr3: &#039;value1&#039; },</span>
+<span style="color: #008000">//   var2: { attr1: &#039;value2&#039;, attr2: &#039;value2&#039;, attr3: &#039;value2&#039; },</span>
+<span style="color: #008000">//   var3: { attr1: &#039;value3&#039;, attr2: &#039;value3&#039;, attr3: &#039;value3&#039; },</span>
+<span style="color: #008000">// } // or something similar.</span>
 </code></pre>
 				<a href="#demo" id="demo" style="color: inherit; text-decoration: none;">
 					<h3>Demo</h3>
