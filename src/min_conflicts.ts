@@ -17,7 +17,7 @@ export const min_conflicts = <TAttributes extends object>(
 ): CurrentDomain<TAttributes> | undefined => {
   // Generate a complete assignment for all variables (probably with conflicts)
   let current: CurrentDomain<TAttributes> = {};
-  aCSP.variables.forEach(variable => {
+  aCSP.variables.forEach((variable: string) => {
     const val = min_conflicts_value<TAttributes>(aCSP, variable, current);
     aCSP.assign(variable, val, current);
   });
