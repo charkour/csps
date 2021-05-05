@@ -1,6 +1,6 @@
 {
   "name": "csps",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "🛠️ Tools to solve constraint satisfaction problems",
   "keywords": [
     "constraint-satisfaction-problems",
